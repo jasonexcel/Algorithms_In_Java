@@ -1,5 +1,8 @@
 package LeetCode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MinimumDepthOfBinaryTree {
 
 	/**
@@ -29,6 +32,38 @@ public class MinimumDepthOfBinaryTree {
         }
         return Math.min(leftD, rightD)+1;
         
+    }
+    
+    public int minDepthByBFS(TreeNode root) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        if(root == null){
+        	return 0;
+        }
+        int minHeight = 1;
+        int curL = 1, nextL = 0;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        while(!q.isEmpty()){
+        	TreeNode n = q.remove();
+        	curL--;
+        	if(n.left==null&&n.right==null){
+        		return minHeight;
+        	}
+        	if(n.left!=null){
+        		q.add(n.left);
+        		nextL++;
+        	}
+        	if(n.right!=null){
+        		q.add(n.right);
+        		nextL++;
+        	}
+        	if(curL==0){
+        		curL = nextL;
+        		nextL = 0;
+        		minHeight++;
+        	}
+        }
+        return minHeight;
     }
 
 }

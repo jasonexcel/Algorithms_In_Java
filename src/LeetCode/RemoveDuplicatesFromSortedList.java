@@ -53,4 +53,25 @@ Given 1->1->2->3->3, return 1->2->3.
 	        
 	        return newHead;
 	    }
+	    
+	    // easier to understand and code
+	    public ListNode deleteDuplicatesII(ListNode head) {
+	        // Note: The Solution object is instantiated only once and is reused by each test case.
+	        ListNode slow = head;
+	        if(head ==null || head.next==null){
+	        	return head;
+	        }
+	        ListNode fast = head.next;
+	        while(fast != null){
+	        	if(fast.val == slow.val){
+	        		fast = fast.next;        		
+	        	}
+	        	else{
+	        		slow.next = fast;
+	        		slow = slow.next;
+	        	}
+	        }
+	        slow.next = null;
+	        return head;
+	    }
 }

@@ -16,22 +16,18 @@ public class RemoveElement {
 	}
 	
 
-	    public static int removeElement(int[] A, int elem) {
-	        // Start typing your Java solution below
-	        // DO NOT write main() function
-	    	 int size = A.length;
-	         int j = 0;
-	     for (int i = 0; i < size; i++)
-	     {
-	         if (A[i] != elem)
-	         {
+	public static int removeElement(int[] A, int elem) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        int cur = 0;
 
-	             A[j]=A[i]; 
-	                         j++;
-	         }
-	     }
-	     return j;
-	     }
-
-
+        for(int i=0; i<A.length; i++){
+        	if(A[i] != elem){
+        		if(i!=cur){
+        			A[cur] = A[i];        	
+        		}
+        	    cur++;
+        	}
+        }
+        return cur;
+    }
 }

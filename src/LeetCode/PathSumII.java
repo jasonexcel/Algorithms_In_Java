@@ -32,20 +32,19 @@ public class PathSumII {
 				ArrayList<ArrayList<Integer>> result, ArrayList<Integer> path) {
 			if (root == null)
 				return;
+			path.add(root.val);
 			if (root.left == null && root.right == null && root.val == sum) {
-				//!!!
+				//!!! make a new copy, otherwise, add same path to the result
 				ArrayList<Integer> clone = new ArrayList<Integer>(path);
-				clone.add(root.val);
 				result.add(clone);
 			} else {
-				path.add(root.val);
 				if (root.left != null) {
 					findPathSum(root.left, sum - root.val, result, path);
 				}
 				if (root.right != null) {
 					findPathSum(root.right, sum - root.val, result, path);
 				}
-				//!!!
+				//!!! remove the element at the index
 	            path.remove(path.size() - 1);
 			}
 		}

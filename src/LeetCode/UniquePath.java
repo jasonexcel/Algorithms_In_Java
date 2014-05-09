@@ -38,4 +38,24 @@ public class UniquePath {
                 
                 return mat[m][n];
         }
+		// math methods, need to consider the overflow of long integer
+		 public int uniquePaths3(int m, int n) {
+			// IMPORTANT: Please reset any member data you declared, as
+			// the same Solution instance will be reused for each test case.
+			if(m==1 || n==1){
+				return 1;
+			}
+			int greater = m>n ? m : n;
+			int less = m<n ? m : n;
+			// math equation: val = (m+n-2)!/(m-1)!*(n-1)!)
+			long val = calFactorial(greater-1, m+n-2)/calFactorial(1, less-1);
+			return (int)val;
+		}
+		private long calFactorial(int lower, int upper){
+			long val = 1;
+			for(int i=lower+1; i<=upper; i++){
+				val *= i;
+			}
+			return val;
+		}
 }

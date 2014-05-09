@@ -1,6 +1,6 @@
 package crackingTheCodingInterveiw150;
 //ctci 1.6 write a method to rotate the matrix in 90 degrees
-public class RotateMatrixNinetyDegree {
+public class CC1_6 {
 
 	/**
 	 * @param args

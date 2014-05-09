@@ -7,7 +7,7 @@ package crackingTheCodingInterveiw150;
 
 import java.util.Hashtable;
 
-public class CareerCup2_1 {
+public class CC2_1 {
 
 	/**
 	 * @param args

@@ -1,5 +1,7 @@
 package basicAlgorithms;
 
+import java.util.ArrayList;
+
 public class AlgoTest {
 
 	/**
@@ -7,32 +9,43 @@ public class AlgoTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] a = {5,3,1};
-		quickSort(a, 0, a.length-1);
-		System.out.println(a);
+		AlgoTest at = new AlgoTest();
+		at.getRow(30);
 	}
-	public static void quickSort(int[] arr, int s, int e){
-		if(s>=e) return;
-		int pivot = e;
-		pivot = partitionArray(arr, s, e);
-		quickSort(arr, s, pivot-1);
-		quickSort(arr, pivot+1, e);
-	}
-	private static int partitionArray(int[] arr, int start, int end){
-		int i = start, cur = start;
-		while(cur<=end){
-			if(arr[cur]<arr[end]){
-				int temp = arr[i];
-				arr[i] = arr[cur];
-				arr[cur] = temp;
-				i++;
-				cur++;
-			}
-			cur++;
-		}
-		int temp = arr[end];
-		arr[end] = arr[i];
-		arr[i] = temp;
-		return i;
-	}
+	public ArrayList<Integer> getRow(int rowIndex) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        if(rowIndex < 0){
+        	return null;
+        }
+        ArrayList<Integer> rowList = new ArrayList<Integer>();
+        if(rowIndex == 0) {
+        	rowList.add(1);
+        }
+        else{
+        	for(int i = 0; i<=rowIndex; i++){
+        		long comVal = 1;
+        		if(i == 0){
+        			comVal = 1;
+        		}
+        		else if(i <= rowIndex/2){
+        			comVal = calcFactRange(rowIndex-i+1, rowIndex)/ calcFactRange(1, i);
+        		}
+        		else{
+        			comVal = rowList.get(rowIndex - i);
+        		}
+        		rowList.add((int)comVal);
+        	}
+        }
+        return rowList;
+    }
+
+    private long calcFactRange(int low, int high){
+    	long val = 1;
+    	while(low<=high){
+    		val *=low;
+    		low++;
+    	}
+    	return val;
+    }
 }

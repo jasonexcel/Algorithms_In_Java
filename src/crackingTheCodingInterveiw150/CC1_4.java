@@ -1,6 +1,6 @@
 package crackingTheCodingInterveiw150;
 
-public class ReplaceSpaceWithStrings {
+public class CC1_4 {
 
 	/**
 	 * @param args

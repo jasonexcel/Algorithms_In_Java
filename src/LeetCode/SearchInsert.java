@@ -25,5 +25,36 @@ public class SearchInsert {
         }
         return a;
     }
+	
+	public int searchInsertRecursively(int[] A, int target) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+     	int len = A.length;
+     	return searchInsertRange(A, target, 0, len-1);
+
+    }
+
+    private int searchInsertRange(int[] A, int target, int start, int end){
+    	if(start==end){
+            if(A[start] < target){
+    			return start + 1;
+    		}
+    		else{
+    			return start;
+    		}
+    	}
+    	int mid = start/2 + end/2;
+    	if(A[mid] == target){
+    		return mid;
+    	}
+    	else if(A[mid] < target){
+    		
+    		return searchInsertRange(A, target, mid+1, end);//minimize the range to avoid dead cycle
+    	}
+    	else{
+    		return searchInsertRange(A, target, start, mid);
+    	}
+    }
+	
 
 }

@@ -13,6 +13,7 @@ public class MergeSortedArrays {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
 	        while(n>0){
+	        	//A is all copied, copy B to the head of A
 	            if(m == 0){
 	                A[n-1] = B[n-1];
 	                n--;

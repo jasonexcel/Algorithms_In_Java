@@ -8,6 +8,7 @@ public class CountAndSay {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		countAndSay(2);
+		countAndSayII(2);
 	}
 	public static String countAndSay(int n) {
         // Start typing your Java solution below
@@ -38,5 +39,31 @@ public class CountAndSay {
         }
         return sb.toString(); 
     }
-
+	public static String countAndSayII(int n) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+		StringBuilder sb = new StringBuilder();
+        sb.append(1);
+        for(int i = 1; i < n; i++){
+        	StringBuilder s2 = new StringBuilder();
+        	int count = 1;
+        	char cur = sb.charAt(0);
+        	for(int j = 1; j < sb.length(); j++){
+        		if(sb.charAt(j) == cur){
+        			count++;
+        			continue;
+        		}
+        		else{
+        			s2.append(count);
+        			s2.append(cur);
+        			cur = sb.charAt(j);
+        			count = 1;
+        		}
+        	}
+        	s2.append(count);
+        	s2.append(sb.charAt(sb.length()-1));
+        	sb = s2;
+        }
+        return sb.toString();
+    }
 }

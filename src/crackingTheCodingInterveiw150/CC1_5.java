@@ -1,6 +1,6 @@
 package crackingTheCodingInterveiw150;
 
-public class BasicStringCompression {
+public class CC1_5 {
 
 	/**
 	 * @param args

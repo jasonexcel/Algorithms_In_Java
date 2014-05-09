@@ -33,4 +33,21 @@ public class RemoveNthFromEndOfList {
 	        if (pointA.next != null)    pointA.next = pointA.next.next;
 	        return pointB.next;
 	    }
+	 public ListNode removeNthFromEndII(ListNode head, int n) {
+	        // IMPORTANT: Please reset any member data you declared, as
+	        // the same Solution instance will be reused for each test case.
+	        ListNode n1 = new ListNode(0);
+	        n1.next = head;
+	        ListNode n2 = n1;
+	        ListNode newHead = head;
+	        for(int i=0; i<n; i++){
+	        	newHead = newHead.next;
+	        }
+	        while(newHead!=null){
+	        	n1 = n1.next;
+	        	newHead = newHead.next;
+	        }
+	        n1.next = n1.next.next;
+	        return n2.next;
+	    }
 }

@@ -18,8 +18,7 @@ public class PlusOne {
                 digits[size-i-1]++;                
                 return digits;
             }
-            digits[size-i-1] = 0;
-            
+            digits[size-i-1] = 0;            
         }
         int[] newD = new int[size+1];
         newD[0] = 1;
@@ -29,5 +28,6 @@ public class PlusOne {
         return newD;
         
     }
+    
 
 }

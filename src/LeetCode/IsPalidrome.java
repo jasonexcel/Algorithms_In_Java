@@ -7,6 +7,8 @@ public class IsPalidrome {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		IsPalidrome ip = new IsPalidrome();
+		ip.isPalindrome(1325335231);
 
 	}
     public boolean isPalindrome(int x) {
@@ -19,11 +21,11 @@ public class IsPalidrome {
         while(x/div >=10) {
             div*=10;
         }
-        while(x>0 && div>0) {
+        while(x>0) {
             if(x%10 != x/div) {
                 return false;
             }
-            x = (x%div)/10;
+            x = (x%div)/10; //!!!
             div = div/100;
         }
         return true;

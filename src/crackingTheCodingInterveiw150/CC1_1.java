@@ -10,7 +10,7 @@ import java.util.*;
  * @author Shaun Jia
  * CTCI 1.1 implement an algorithm to determine if a string has unique characters
  */
-public class DeterminUniqueCharactersInString {
+public class CC1_1 {
 
 	/**
 	 * @param args
@@ -19,7 +19,7 @@ public class DeterminUniqueCharactersInString {
 		// TODO Auto-generated method stub
         Scanner input = new Scanner(System.in);
         String str = input.next();
-        DeterminUniqueCharactersInString model = new DeterminUniqueCharactersInString();
+        CC1_1 model = new CC1_1();
         
         //if(model.isUniqueCharacters(str))
         if(model.isUniqueCharactersByBitShift(str))	

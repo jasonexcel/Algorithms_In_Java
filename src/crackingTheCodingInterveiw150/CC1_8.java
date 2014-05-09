@@ -8,7 +8,7 @@ package crackingTheCodingInterveiw150;
 
 import java.util.Scanner;
 
-public class CareerCup1_8 {
+public class CC1_8 {
 
 	/**
 	 * @param args

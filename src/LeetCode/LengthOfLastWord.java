@@ -40,5 +40,20 @@ return 5.
 	        return wordLen;
 	        
 	    }
+	 public int lengthOfLastWordII(String s) {
+	        // Note: The Solution object is instantiated only once and is reused by each test case.
+	        int total = s.length();
+	        int len = 0;
+	        for(int i = 0; i<total; i++){
+	        	if(s.charAt(total-i-1) != ' '){
+	        		len++;
+	        	}
+	        	else if(len != 0){
+	        	    break;
+	        	}
+
+	        }
+	        return len; 
+	    }
 
 }
