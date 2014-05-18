@@ -1,6 +1,6 @@
 package RealInterviewQuestion;
 
-public class ZillowCodeTestQuestion_1 {
+public class ConvertStringToLong {
 
 	/**
 	 * @param args
