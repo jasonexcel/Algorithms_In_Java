@@ -77,7 +77,7 @@ public class ConvertStringToLong {
 		int head, tail;
 		int len = original.length();
 		StringBuilder sb = new StringBuilder();
-		int i, j;
+		int i, j; // defined here instead of inner loop
 		for(i = 0; i < len; i++){
 			char c = original.charAt(i);				
 			if(c != ' ') {
