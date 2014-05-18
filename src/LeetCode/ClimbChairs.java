@@ -7,7 +7,7 @@ public class ClimbChairs {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(climbStairs(1));
+		System.out.println(ClimbStairs1(1));
 	}
     public static int ClimbStairs1(int n){
         if(n<1){
@@ -42,7 +42,7 @@ public class ClimbChairs {
         }
         return a[n];
     }
-    public static int climbStair3(int n){
-        //same as calculating fibnacci number
-    }
+//    public static int climbStair3(int n){
+//        //same as calculating fibnacci number
+//    }
 }

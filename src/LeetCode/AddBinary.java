@@ -8,7 +8,7 @@ public class AddBinary {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		System.out.println(addBinary2("0","1"));
+		System.out.println(addBinary2("10","111"));
 	}
 	   public static String addBinary(String a, String b) {
 	        // Start typing your Java solution below
@@ -73,7 +73,7 @@ public class AddBinary {
 	        int i = lenA -1, j = lenB -1;
 	        int len = lenA > lenB? lenA+1:lenB+1;
 	        int k = len -1;
-	       char[] result = new char[len];
+	        char[] result = new char[len];
 	        int carry = 0;
 	        while(i>=0 && j>=0){
 	            int temp = a.charAt(i--) - '0' + b.charAt(j--) - '0' + carry;
