@@ -2,6 +2,8 @@ package LeetCode;
 
 import java.util.Stack;
 
+import LeetCode.SymmetricTree.TreeNode;
+
 /**
  * Definition for binary tree
  * public class TreeNode {

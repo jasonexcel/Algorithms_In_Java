@@ -14,10 +14,11 @@
 package LeetCode;
 
 public class UniqueBinarySearchTrees {
+	// iterative method
     public int numTrees(int n) {
-        if(n <= 0){
-            return 0;
-        }
+//        if(n <= 0){
+//            return 1;
+//        }
         //ways[n] represents the ways for n nodes
         int[] ways = new int[n+1];
         ways[0] = 1;
@@ -33,5 +34,47 @@ public class UniqueBinarySearchTrees {
             }
         }
         return ways[n];
+    }
+    
+    //Catalan number, recursive method, bad
+    public int numTrees2(int n){
+    	if(n<=0){
+    		return 1;
+    	}
+    	int sum = 0;
+    	for(int root = 1; root<=n; root++){
+    		sum+=numTrees2(root-1)*numTrees2(n-root);
+    	}
+    	return sum;
+    }
+    
+    //Catalan number, recursive method with cache
+    public int numTrees3(int n){
+    	int[] ways = new int[n+1];
+    	return calcWays(ways, n); 
+    }
+    
+    public int calcWays(int[] ways, int x){
+    	if(x==0){
+    		ways[0] = 1;
+    		return 1;
+    	}
+    	for(int root = 1; root<=x; root++){
+    		int lWays, rWays;
+    		if(ways[root-1] > 0){
+    			lWays = ways[root-1];
+    		}
+    		else{
+    			lWays = calcWays(ways, root-1);
+    		}
+    		if(ways[x - root]>0){
+    			rWays = ways[x-root];
+    		}
+    		else{
+    			rWays = calcWays(ways, x-root);
+    		}
+    		ways[x] += lWays * rWays;
+    	}
+    	return ways[x];
     }
 }
