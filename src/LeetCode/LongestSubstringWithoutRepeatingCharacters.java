@@ -1,6 +1,13 @@
+/**
+ * Given a string, find the length of the longest substring without repeating characters. 
+ * For example, the longest substring without repeating letters for "abcabcbb" is "abc", 
+ * which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
+ */
+
 package LeetCode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
@@ -31,14 +38,16 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int maxLen = 0;
         int start = 0, i = 0;
         for(i = 0; i<s.length(); i++){
+        	// !!! direct access 
             if(repeat[s.charAt(i)] == false){
+            	// not occur in the past, set to true and continue the loop
                 repeat[s.charAt(i)] = true;
                 
             }
             else{
                 maxLen = maxLen>(i-start)? maxLen:(i-start);
+                // !!! reset all the characters before the new start
                 while(s.charAt(start) != s.charAt(i)){
-                	// !!! reset the characters before new start
                     repeat[s.charAt(start)] = false;
                     start++;
                 }
@@ -48,5 +57,37 @@ public class LongestSubstringWithoutRepeatingCharacters {
         // compare with the last substring
         maxLen = maxLen>(i-start)? maxLen:(i-start);
         return maxLen;
+    }
+    
+    // hashmap or hashset
+    public int lengthOfLongestSubstringByHashMap(String s) {
+        if(s == null || s.length() == 0){
+        	return 0;
+        }
+
+        HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
+        int length = 0, maxLength = 0;
+        int start = 0;
+        for(int i=0; i<s.length(); i++){
+        	// not occur or occur before start, then increment length
+        	if(!hm.containsKey(s.charAt(i)) || (hm.containsKey(s.charAt(i)) && hm.get(s.charAt(i)) < start)){
+        		hm.put(s.charAt(i), i);
+        		length++;
+        	}
+        	// occurred after the start
+        	else{
+        		//set new start
+        		start = hm.get(s.charAt(i))+1;
+        		//update new length
+        		length = i - start+1;
+        		// !!!remove old entry, add new entry
+        		hm.remove(s.charAt(i));
+        		hm.put(s.charAt(i), i);
+        	}
+        	if(length>maxLength){
+        			maxLength = length;
+        		}
+        }
+        return maxLength;
     }
 }
