@@ -20,23 +20,24 @@ public class MaximumSubarray {
 	    int local = 0;
 
 	    for(int i = 0; i<A.length; i++){
-	        local +=A[i];
+	        if(local>=0){
+	        	local+=A[i];
+	        }
+	        else{
+	        	local=A[i];
+	        }
 	    	if(local > max){
 	    		max =local;
-	    	}
-	    	
-	    	if(local<0){
-	    		local = 0;
-	    	}
+	    	}	    		    	
 	    }
 	    return max;
 	}
-	
+	// maybe easier to understand
 	public int maxSubArrayII(int[] A) {
 	    if(A==null || A.length==0)
 	        return 0;
 	    int global = A[0];// store the max value
-	    int local = A[0]; //store the contiguous subarry until last one
+	    int local = A[0]; //store the contiguous subarray until last one
 	    for(int i=1;i<A.length;i++)
 	    {
 	        local = Math.max(A[i],local+A[i]);
