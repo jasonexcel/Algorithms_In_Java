@@ -1,0 +1,112 @@
+package LeetCode;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+public class MergeKSortedLists {
+	public class ListNode {
+		int val;
+		ListNode next;
+		ListNode(int x) {
+		    val = x;
+		    next = null;
+		}
+	}
+	
+    public ListNode mergeKLists(List<ListNode> lists) {
+        if(lists == null || lists.size() == 0){
+            return null;
+        }
+    	int size = lists.size();
+    	if(size>1){
+    		List<ListNode> left = lists.subList(0, size/2);
+    		List<ListNode> right = lists.subList(size/2, size);
+    		ListNode listA = mergeKLists(left);
+    		ListNode listB = mergeKLists(right);
+    		return mergeTwoLists(listA, listB);
+    	}
+    	else{
+    		return lists.get(0);
+    	}
+    }
+
+    //my initial solution
+    private ListNode mergeTwoLists(ListNode listA, ListNode listB){
+    	ListNode res = new ListNode(0);
+        ListNode dummy = res;
+
+    	while(listA != null && listB != null){
+    		if(listA.val <= listB.val){
+    			//use res.next not res here!
+    		    res.next = new ListNode(listA.val); 
+    			res = res.next;
+    			listA = listA.next;	
+    		}
+    		else{
+    			res.next = new ListNode(listB.val);
+    			res = res.next;
+    			listB = listB.next;
+    		}
+    	}
+    	if(listA != null){
+    		res.next = listA;
+
+    	}
+    	if(listB != null){
+    		res.next = listB;
+    	}
+    	return dummy.next;
+    }
+    
+    //http://blog.csdn.net/linhuanmars/article/details/19899259
+    public ListNode mergeKListsHeap(ArrayList<ListNode> lists) {
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10,new Comparator<ListNode>(){
+        	@Override
+                public int compare(ListNode n1, ListNode n2)
+                {
+                    return n1.val-n2.val;
+                }
+            });
+        for(int i=0;i<lists.size();i++)
+        {
+            ListNode node = lists.get(i); 
+            if(node!=null)
+            {
+                heap.offer(node);
+            }
+        }
+        ListNode head = null;
+        ListNode pre = head;
+        while(heap.size()>0)
+        {
+            ListNode cur = heap.poll();
+            if(head == null)
+            {
+                head = cur;
+                pre = head;
+            }
+            else
+            {
+                pre.next = cur;
+            }
+            pre = cur;
+            if(cur.next!=null)
+                heap.offer(cur.next);
+        }
+        return head;
+    }
+}

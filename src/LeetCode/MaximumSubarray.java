@@ -23,6 +23,7 @@ public class MaximumSubarray {
 	        if(local>=0){
 	        	local+=A[i];
 	        }
+	        //reset local optimal only when local is negative, dump all previous i -1 numbers
 	        else{
 	        	local=A[i];
 	        }
