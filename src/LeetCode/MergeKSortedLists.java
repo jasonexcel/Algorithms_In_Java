@@ -1,3 +1,8 @@
+/*
+ * Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+ * 
+ * Warning: I think the sort is from lower to higher value
+ */
 package LeetCode;
 
 import java.util.ArrayList;
@@ -50,6 +55,7 @@ public class MergeKSortedLists {
         ListNode dummy = res;
 
     	while(listA != null && listB != null){
+    		//lower value first
     		if(listA.val <= listB.val){
     			//use res.next not res here!
     		    res.next = new ListNode(listA.val); 
@@ -74,13 +80,16 @@ public class MergeKSortedLists {
     
     //http://blog.csdn.net/linhuanmars/article/details/19899259
     public ListNode mergeKListsHeap(ArrayList<ListNode> lists) {
-        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10,new Comparator<ListNode>(){
+    	
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>(){
         	@Override
                 public int compare(ListNode n1, ListNode n2)
                 {
+        			//lower value first
                     return n1.val-n2.val;
                 }
             });
+        
         for(int i=0;i<lists.size();i++)
         {
             ListNode node = lists.get(i); 
@@ -93,6 +102,7 @@ public class MergeKSortedLists {
         ListNode pre = head;
         while(heap.size()>0)
         {
+        	//always 
             ListNode cur = heap.poll();
             if(head == null)
             {
