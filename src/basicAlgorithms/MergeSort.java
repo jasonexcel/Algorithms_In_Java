@@ -19,8 +19,7 @@ public class MergeSort {
 	        
 	        // Merge firstHalf with secondHalf
 	        int[] temp = merge(firstHalf, secondHalf);
-	        //System.arraycopy(temp, 0, list, 0, temp.length); 
-	        list = merge(firstHalf, secondHalf);
+	        System.arraycopy(temp, 0, list, 0, temp.length); 
 		}
     }
 	
@@ -46,7 +45,7 @@ public class MergeSort {
 	/** A test method */
 	public static void main(String[] args) {	
 		
-		int[] list = {3, 1, 2, 5, 6, 1, -2, -8, 14, 12};
+		int[] list = {3, 1, 2, 5, 6, 1, -2, -8, 14, 12, 8, 3, -5};
 		mergeSort(list);
 		for (int i = 0; i < list.length; i++)
 		System.out.print(list[i] + ", ");
