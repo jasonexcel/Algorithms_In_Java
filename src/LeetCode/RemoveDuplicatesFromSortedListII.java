@@ -43,5 +43,42 @@ public class RemoveDuplicatesFromSortedListII {
         }
         return sentinel.next;
 		}
+	
+	public ListNode deleteDuplicatesII(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode keeper = dummy;
+        if(head == null){
+        	return null;
+        }
+        int curVal=head.val;
+        int numCount = 1;
+        while(head.next!=null){
+        	if(head.next.val==curVal){
+        		numCount++;
+        		head = head.next;
+        	}
+        	else{
+        		if(numCount==1){
+        			//no duplicate
+        			keeper.next = head;
+        			keeper = keeper.next;
+        		}
+        		else{
+            		//reset numCount to remove all duplicates
+            		numCount = 1;
+        		}
 
+        		curVal = head.next.val;
+        		head = head.next;
+        	}
+        }
+        if(numCount==1){
+        	keeper.next = head;
+        }
+        else{
+        	//remove all duplicates
+        	keeper.next = null;
+        }
+        return dummy.next;
+    }
 }
