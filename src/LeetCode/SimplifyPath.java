@@ -19,7 +19,7 @@ import java.util.Stack;
 public class SimplifyPath {
 	public static void main(String[] args){
 		SimplifyPath ins = new SimplifyPath();
-		String test = new String("/h///");
+		String test = new String("/h///.//..d/");
 		System.out.println(ins.simplifyPath(test));
 		System.out.println(ins.simplifyPathOthers(test));
 	}
@@ -40,15 +40,18 @@ public class SimplifyPath {
 	    		temp.append(path.charAt(i));
 	    		i++;
 	    	}
-	    	String str = temp.toString();
-	    	if(str.equals("..")){
-	    		if(!s.empty()){
-		    		s.pop();
-	    		}
+	    	if(temp.length()>0){
+		    	String str = temp.toString();
+		    	if(str.equals("..")){
+		    		if(!s.empty()){
+			    		s.pop();
+		    		}
+		    	}
+		    	else if(!str.equals(".")){
+		    		s.push(str);
+		    	}
 	    	}
-	    	else if(!str.equals(".")){
-	    		s.push(str);
-	    	}
+
 	    	i++;
 	    }
 
