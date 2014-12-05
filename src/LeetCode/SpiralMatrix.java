@@ -1,0 +1,62 @@
+/**
+ * Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+
+For example,
+Given the following matrix:
+
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+You should return [1,2,3,6,9,8,7,4,5].
+ */
+package LeetCode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author sjia
+ * 
+ */
+public class SpiralMatrix {
+	public List<Integer> spiralOrder(int[][] matrix) {
+		List<Integer> res = new ArrayList<Integer>();
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+			return res;
+		}
+		int rowSize = matrix.length;
+		int colSize = matrix[0].length;
+		int rowStart = 0;
+		int colStart = 0;
+		while (rowSize > 0 && colSize > 0) {
+			for (int i = colStart; i < colStart + colSize; i++) {
+				res.add(matrix[rowStart][i]);
+			}
+			// break if only one row left, otherwise case like {[2], [3]} cannot
+			// pass
+			if (rowSize == 1) {
+				break;
+			}
+			for (int j = rowStart + 1; j < rowStart + rowSize; j++) {
+				res.add(matrix[j][colStart + colSize - 1]);
+			}
+			// break if only one column left
+			if (colSize == 1) {
+				break;
+			}
+			for (int i = colStart + colSize - 2; i >= colStart; i--) {
+				res.add(matrix[rowStart + rowSize - 1][i]);
+			}
+			for (int j = rowStart + rowSize - 2; j > rowStart; j--) {
+				res.add(matrix[j][colStart]);
+			}
+			rowSize -= 2;
+			colSize -= 2;
+			rowStart++;
+			colStart++;
+		}
+		return res;
+	}
+}

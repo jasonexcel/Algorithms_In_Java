@@ -26,6 +26,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		int a2 = a1;
 
 	}
+	//good to learn the boolean array, two pointers, but harder to understand
     public int lengthOfLongestSubstring(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
@@ -59,7 +60,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxLen;
     }
     
-    // hashmap or hashset
+    //* my solution: hashmap or hashset
     public int lengthOfLongestSubstringByHashMap(String s) {
         if(s == null || s.length() == 0){
         	return 0;
