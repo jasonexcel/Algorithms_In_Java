@@ -17,6 +17,7 @@ public class ValidateBinarySearchTree {
 
 	}
 	
+	//O(n) time complexity, O(n) space complexity
 	 public static boolean isValidBST(TreeNode root) {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
@@ -38,5 +39,58 @@ public class ValidateBinarySearchTree {
 	        treeTraversal(t.right, arr);
 	        return;
 	    }
+	    
+	    //better but hard, o(n) time complexity, o(logn) space complexity
+	    public boolean isValidBST_2(TreeNode root) {
+	        ArrayList<Integer> pre = new ArrayList<Integer>();
+	        //the first element in 'pre' represent the previous number in the array sorted by in-order traversal
+	        pre.add(null);
+	        return helper(root, pre);
+	    }
+	    private boolean helper(TreeNode root, ArrayList<Integer> pre)
+	    {
+	        if(root == null)
+	            return true;
+	        //left part
+	        boolean left = helper(root.left,pre);
+	        if(!left){
+	        	return false;
+	        }
+	        //verify by comparing root value with the previous number
+	        if(pre.get(0)!=null && root.val<=pre.get(0)){
+	            return false;
+	        }
+	        //set current root value as the previous number
+	        pre.set(0,root.val);
+	        //right part
+	        return helper(root.right,pre);
+	    }
+	    
+	    //same as the 2nd method, only change the object 'pre' type 
+	    public boolean isValidBST_3(TreeNode root) {
+	    	//cast Integer.MIN_VALUE to long int first
+	        long[] pre = {(long)Integer.MIN_VALUE-1};
+	        return helper(root, pre);
+	    }
+	    private boolean helper(TreeNode root, long[] pre)
+	    {
+	        if(root == null)
+	            return true;
+	        //left part
+	        boolean left = helper(root.left,pre);
+	        if(!left){
+	        	return false;
+	        }
+	        //verify by comparing root value with the previous number
+	        if(root.val<=pre[0]){
+	            return false;
+	        }
+	        //set current root value as the previous number
+	        pre[0] = root.val;
+	        //right part
+	        return helper(root.right,pre);
+	    }
 
+
+	    
 }

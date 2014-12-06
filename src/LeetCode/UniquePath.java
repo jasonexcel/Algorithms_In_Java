@@ -5,24 +5,33 @@ public class UniquePath {
 	/**
 	 * @param args
 	 */
-	public static int MAX =101;
-    int[][] cache = new int[MAX][MAX];
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		UniquePath up = new UniquePath();
-		System.out.println(up.uniquePaths(100,2));
+		System.out.println(up.uniquePaths(2,2));
 
 	}
         public int uniquePaths(int m, int n) {
             // Start typing your Java solution below
             // DO NOT write main() function
             if(m<=0 || n<=0) return 0;
-            if(m == 1 && n == 1) return 1;
-            if(cache[m][n] != 0)         return cache[m][n];
-            cache[m][n] = uniquePaths(m-1,n) + uniquePaths(m,n-1);
-
-            return cache[m][n];
+            int[][] cache = new int[m][n];
+            return uniquePathsHelper(m, n, cache);
         }
+        private int uniquePathsHelper(int i, int j, int[][] cache){
+            if(cache[i-1][j-1] != 0) {
+            	return cache[i-1][j-1];
+            }
+            if(i == 1 || j == 1){
+            	cache[i-1][j-1] = 1;
+            	return 1;
+            }
+
+            cache[i-1][j-1] = uniquePathsHelper(i-1,j, cache) + uniquePathsHelper(i,j-1, cache);
+            return cache[i-1][j-1];
+        }
+        
         // Dynamic programming approach
         public int uniquePaths2(int m, int n) {
             // Start typing your Java solution below
@@ -57,5 +66,22 @@ public class UniquePath {
 				val *= i;
 			}
 			return val;
+		}
+		
+		//!DP, O(m*n) time complexity, O(n) space complexity. Best solution here!
+		public int uniquePaths4(int m, int n) {
+		    if(m<=0 || n<=0)
+		        return 0;
+		    int[] res = new int[n];
+		    res[0] = 1;
+		    for(int i=0;i<m;i++)
+		    {
+		    	// here j starting from 1, no 0
+		        for(int j=1;j<n;j++)
+		        {
+		           res[j] += res[j-1];
+		        }
+		    }
+		    return res[n-1];
 		}
 }

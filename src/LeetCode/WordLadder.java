@@ -3,6 +3,7 @@ package LeetCode;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class WordLadder {
 
@@ -13,7 +14,7 @@ public class WordLadder {
 		// TODO Auto-generated method stub
 		String start = new String("hot");
 		String end = new String("dog");
-		HashSet<String> dict = new HashSet<String>();
+		Set<String> dict = new HashSet<String>();
 		dict.add("hot");
 		dict.add("dog");
 		dict.add("dot");
@@ -21,11 +22,9 @@ public class WordLadder {
 		fl.ladderLength(start, end, dict);
 	}
 
-	public int ladderLength(String start, String end, HashSet<String> dict) {
-	    // IMPORTANT: Please reset any member data you declared, as
-	    // the same Solution instance will be reused for each test case.
+	public int ladderLength(String start, String end, Set<String> dict) {
 	    Queue<String> from = new LinkedList<String>(); // store the path       
-	    HashSet<String> used = new HashSet<String>(); // stores the userd words
+	    HashSet<String> used = new HashSet<String>(); // stores the used words
 	    from.add(start);
 	    int step = 1; // step from beginning to end, if beginning = end, then set as 1
 	    int curL = 1, nextL = 0; // the number of elements in current level and next level 
@@ -35,7 +34,7 @@ public class WordLadder {
 	    	if(cur.equals(end)){
 	    		return step;
 	    	}
-	    	// if the variation in the dict, then add to next level and aslo the used set
+	    	// if the variation in the dict, then add to next level and also the used set
 	    	char[] charArray = cur.toCharArray();
 	    	for(int i=0; i<charArray.length; i++){
 	    		// base is the original char, needs to be reset after the modification
