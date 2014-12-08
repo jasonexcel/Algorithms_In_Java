@@ -11,6 +11,8 @@ Given binary tree {1,#,2,3},
 return [1,3,2].
 
 Note: Recursive solution is trivial, could you do it iteratively?
+
+Morris traversal： http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html
  */
 package LeetCode;
 
