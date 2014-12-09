@@ -1,6 +1,10 @@
+/**
+ * Given a singly linked list where elements are sorted in ascending order, 
+ * convert it to a height balanced BST.
+ */
 package LeetCode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class ConvertSortedListtoBinarySearchTree {
 
@@ -10,6 +14,33 @@ public class ConvertSortedListtoBinarySearchTree {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public TreeNode sortedListToBST(ListNode head) {
+	    if(head == null)
+	        return null;
+	    ListNode cur = head;
+	    int count = 0;
+	    while(cur!=null)
+	    {
+	        cur = cur.next;
+	        count++;
+	    }
+	    ArrayList<ListNode> list = new ArrayList<ListNode>();
+	    list.add(head);
+	    return helper(list,0,count-1);
+	}
+	private TreeNode helper(ArrayList<ListNode> list, int l, int r)
+	{
+	    if(l>r)
+	        return null;
+	    int m = (l+r)/2;
+	    TreeNode left = helper(list,l,m-1);
+	    TreeNode root = new TreeNode(list.get(0).val);
+	    root.left = left;
+	    list.set(0,list.get(0).next);
+	    root.right = helper(list,m+1,r);
+	    return root;
 	}
 	
 	//Definition for singly-linked list.
@@ -40,11 +71,12 @@ public class ConvertSortedListtoBinarySearchTree {
     }    
     
     
-    public TreeNode sortedListToBST(ListNode head) {
+    public TreeNode sortedListToBST_Old(ListNode head) {
         // Start typing your Java solution below
         // DO NOT write main() function
         ListNode temp = head;
         int length = 0;
+        //get the size at first
         while(temp!=null){
             temp=temp.next;
             length++;
@@ -56,7 +88,7 @@ public class ConvertSortedListtoBinarySearchTree {
     public Element sortedListToBST(ListNode head, int start, int end){
         if(start>end) return new Element(head,null);
         
-        int mid=(start+end)/2;
+        int mid=start+(end-start)/2;
         Element leftChild = sortedListToBST(head, start,mid-1); 
         
         head = leftChild.n;
