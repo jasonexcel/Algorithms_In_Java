@@ -23,6 +23,7 @@ public class QuickSort {
 				int temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
+				//i move to next value which is not less than flag 
 				i++;
 				j++;
 			}
@@ -36,7 +37,7 @@ public class QuickSort {
 	
 	/** A test method */
 	public static void main(String[] args) {
-	int[] list = {7,3,9,6,5,-2,10,3,9,6,5,-2,10, 65, -5, 5,3,10, 12,56, 13,-20,0 , 2, 3, 11, 20};
+	int[] list = {7,3,9,6};
 	    quickSort(list);
 	for (int i = 0; i < list.length; i++)
 	      System.out.print(list[i] + " ");

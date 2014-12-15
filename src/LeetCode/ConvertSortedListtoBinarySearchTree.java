@@ -13,12 +13,18 @@ public class ConvertSortedListtoBinarySearchTree {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		ConvertSortedListtoBinarySearchTree ins = new ConvertSortedListtoBinarySearchTree();
+		ListNode head = ins.new ListNode(1);
+		head.next = ins.new ListNode(3);
+		ins.sortedListToBST(head);
 	}
 	
+	//method one
 	public TreeNode sortedListToBST(ListNode head) {
-	    if(head == null)
+	    if(head == null){
 	        return null;
+	    }
+
 	    ListNode cur = head;
 	    int count = 0;
 	    while(cur!=null)
@@ -26,22 +32,56 @@ public class ConvertSortedListtoBinarySearchTree {
 	        cur = cur.next;
 	        count++;
 	    }
-	    ArrayList<ListNode> list = new ArrayList<ListNode>();
-	    list.add(head);
-	    return helper(list,0,count-1);
+	    //ArrayList<ListNode> list = new ArrayList<ListNode>();
+	    //list.add(head);
+	    ListNode[] list = {head};
+	    
+	    return bstHelper(list,0,count-1);
 	}
+	//my solution
+	private TreeNode bstHelper(ListNode[] list, int l, int r){
+		if(l>r){
+			return null;
+		}
+		else{
+			if(l==r){
+				TreeNode root = new TreeNode(list[0].val);
+				//important, list contains the next node to be added
+				list[0] = list[0].next;
+				return root;
+			}
+			else{
+				int mid = l+(r-l)/2;
+				//construct the leftmost node 
+				TreeNode left = bstHelper(list, l, mid-1);
+				//list contains current root value
+				TreeNode root = new TreeNode(list[0].val);
+				root.left = left;
+				list[0] = list[0].next;
+				root.right = bstHelper(list, mid+1, r);
+				return root;
+			}
+		}
+	}
+	//this is the method to construct a BST tree recursively by in-order traversal
 	private TreeNode helper(ArrayList<ListNode> list, int l, int r)
 	{
-	    if(l>r)
-	        return null;
+	    if(l>r){
+	    	return null;
+	    }
+	    //index m is for current parent node    
 	    int m = (l+r)/2;
+	    //construct left tree
 	    TreeNode left = helper(list,l,m-1);
+	    //get parent node value from the first number in the array list
 	    TreeNode root = new TreeNode(list.get(0).val);
 	    root.left = left;
 	    list.set(0,list.get(0).next);
 	    root.right = helper(list,m+1,r);
 	    return root;
 	}
+	
+	//method two
 	
 	//Definition for singly-linked list.
 	public class ListNode {
