@@ -94,8 +94,8 @@ public class NQueenProblem {
 
 
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
-        enumerate(N);
+        //int N = Integer.parseInt(args[0]);
+        enumerate(2);
     }
 
 }
