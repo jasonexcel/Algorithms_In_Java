@@ -11,7 +11,7 @@ public class NQueenII {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		NQueenII ins = new NQueenII();
-		System.out.println(ins.totalNQueens(1));
+		System.out.println(ins.totalNQueens(4));
 	}
 	
 	public int totalNQueens(int n) {

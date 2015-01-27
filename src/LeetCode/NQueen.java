@@ -12,7 +12,7 @@ public class NQueen {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		NQueen ins = new NQueen();
-		List<String[]> results = ins.solveNQueens(1);
+		List<String[]> results = ins.solveNQueens(4);
 		System.out.println();
 	}
 	public List<String[]> solveNQueens(int n) {
@@ -26,12 +26,12 @@ public class NQueen {
 	
 	private void enumerate(int[] oI, int row, List<String[]> results){
 		if(row == oI.length){
-			//find one solution
+			//find one solution, it will go back one level
 			buildResults(oI, results);			
 		}
 		else{
 			for(int i=0; i<oI.length; i++){
-				oI[row] = i; //reset the index of queen 
+				oI[row] = i; //reset the index of queen, all other values in this row will be cleaned 
 				if(isConsistent(oI, row)){
 					// no conflict, continue to next row
 					enumerate(oI, row+1, results);
@@ -42,6 +42,7 @@ public class NQueen {
 	
 	//check for conflicts
 	private boolean isConsistent(int[] oI, int row){
+		//only check against the elements before current row
 		for(int i=0; i<row; i++){
 			if(oI[i] == oI[row]){
 				return false;
