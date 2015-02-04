@@ -43,7 +43,7 @@ public class MergeSort {
 			temp[current3++] = list2[current2++];
 		return temp;
 	}
-	//better detail to handle divide and conque
+	//better detail to handle divide and conquer
 	private void recMergeSort(int[] list, int lBound, int rBound){
 		if(lBound>=rBound){
 			return;
