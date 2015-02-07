@@ -33,6 +33,7 @@ public class SearchInRotatedSortedArray {
     		if(A[mid] == target){
     			return mid;
     		}
+    		// compare mid with right 
     		else if(A[mid] < A[right]){
     			//from mid to right is in order
     			if(A[right] == target){
