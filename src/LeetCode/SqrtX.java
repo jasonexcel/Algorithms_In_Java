@@ -30,6 +30,7 @@ public class SqrtX {
         	int mid = (min+max)/2;
         	//use division not multiplication
         	if(x/mid>mid){
+        		//!!!
         		if(x/(mid+1)<(mid+1)){
         			return mid;
         		}
@@ -41,7 +42,7 @@ public class SqrtX {
         		max = mid - 1;
         	}
         	else{
-        		return mid;
+        		return mid;//!!!
         	}
         }
         return max;

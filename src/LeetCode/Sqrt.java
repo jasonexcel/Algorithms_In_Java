@@ -17,6 +17,7 @@ public class Sqrt {
         if(x<=0) return 0;
         if(x == 1) return 1;
         int min = 1;
+        //weird, not good
         int max = (int) (x>Math.sqrt(Integer.MAX_VALUE)? Math.sqrt(Integer.MAX_VALUE):x);
         int mid;
         while(min < max){

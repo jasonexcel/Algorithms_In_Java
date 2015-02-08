@@ -10,7 +10,7 @@ You may assume no duplicate exists in the array.
 package LeetCode;
 
 /**
- *  time complexity: o(logn), space compexity: o(1)
+ *  time complexity: o(logn), space complexity: o(1)
  *
  */
 public class SearchInRotatedSortedArray {

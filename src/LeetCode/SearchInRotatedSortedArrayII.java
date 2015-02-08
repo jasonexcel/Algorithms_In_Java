@@ -32,7 +32,7 @@ public class SearchInRotatedSortedArrayII {
             int mVal = A[mid];
             if(target == mVal){
                 return true;
-            }
+            }																									
             else if(A[left] < A[mid]){
                 if(A[left] == target){
                 	return true;
@@ -57,6 +57,7 @@ public class SearchInRotatedSortedArrayII {
             	}
             }
             else{
+            	//extra work
             	left++;
             }
         }

@@ -12,7 +12,7 @@ return [3, 4].
 package LeetCode;
 
 /**
- * @author Shaun
+ * 
  *
  */
 public class SearchForARange {
@@ -50,8 +50,9 @@ public class SearchForARange {
     	}
     	int mid = start + (end - start)/2;
     	if(arr[mid] == target){
-    		res[0] = mid;
+    		res[0] = mid; //assign the value first
     	}
+    	//!!!even if values are equal, still find it in the left partition
     	if(arr[mid] >= target){
     		searchLeft(arr, target, start, mid-1, res);
     	}
@@ -71,6 +72,7 @@ public class SearchForARange {
     	if(arr[mid] > target){
     		searchRight(arr, target, start, mid-1, res);
     	}
+    	//even if values are equal, still find it in the right partition
     	else{
     		searchRight(arr, target, mid+1, end, res);
     	}
@@ -111,6 +113,7 @@ public class SearchForARange {
                 rr = m-1;
             }
         }
+        //!!! if there is value, ll shouldn't be greater than rr
         if(ll<=rr)
         {
             res[0] = ll;
