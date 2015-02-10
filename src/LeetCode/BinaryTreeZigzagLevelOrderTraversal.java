@@ -1,5 +1,6 @@
 /**
- * Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+ * Given a binary tree, return the zigzag level order traversal of its nodes' values. 
+(ie, from left to right, then right to left for the next level and alternate between).
 
 For example:
 Given binary tree {3,9,20,#,#,15,7},
@@ -86,7 +87,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
     	}    	
     }
     
-    //Iterative method
+    //Iterative method, o(n) time and space complexity
     public List<List<Integer>> zigzagLevelOrderIterative(TreeNode root) {
     	List<List<Integer>> results = new ArrayList<List<Integer>>();
     	if(root==null){
