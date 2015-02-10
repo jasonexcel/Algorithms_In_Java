@@ -19,6 +19,7 @@ import java.util.*;
 	TreeNode right;
 	TreeNode(int x) { val = x; }
 }
+ // time complexity: o(n), space complexity: o(n), since the last level has n/2 nodes
 public class BinaryTreeLevelOrderTraversal {
     public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
     	ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
