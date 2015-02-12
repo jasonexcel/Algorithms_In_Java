@@ -31,13 +31,14 @@ public class BinaryTreeMaximumPathSum {
         	return 0; 
         }
         int[] maxSum = {Integer.MIN_VALUE};
-        maxBranchSum(root, maxSum);
+        maxBranchSum(root, maxSum); //discard the maxBranchSum value, we need max path sum
         return maxSum[0];
     }
     
     /*
+     * goal: calculate the maxSum for each root node when visited, and store in array maxSum
      * parameter: current node, current max path sum 
-     * return: max branch sum - the maximum sum from root to one of its descendants
+     * return: max branch sum - the maximum sum from root to one of its descendants, root must be included
      */
     private int maxBranchSum(TreeNode root, int[] maxSum){
     	if(root==null){
@@ -46,8 +47,8 @@ public class BinaryTreeMaximumPathSum {
     	//the left node must be included in the leftBranchSum
     	// the sum is the max of left node to any its descendant 
     	int leftBranchSum = maxBranchSum(root.left, maxSum);
-    	int rightBranchSum = maxBranchSum(root.right, maxSum);
-    	int curPathSum = root.val;
+    	int rightBranchSum = maxBranchSum(root.right, maxSum);    	
+    	int curPathSum = root.val; //root also must be included here
     	if(leftBranchSum>0){
     		curPathSum+=leftBranchSum;
     	}
@@ -58,6 +59,7 @@ public class BinaryTreeMaximumPathSum {
     		maxSum[0] = curPathSum;
     	}
     	//return the maxBranchSum: from root to any its descendant
+    	//res is the max of(left, right, 0) + root.val
     	int res = leftBranchSum>0 ? leftBranchSum : 0;
     	res = res>rightBranchSum ? res : rightBranchSum;
     	return res+root.val;

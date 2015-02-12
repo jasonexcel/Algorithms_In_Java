@@ -64,6 +64,7 @@ public class ConvertSortedListtoBinarySearchTree {
 		}
 	}
 	//this is the method to construct a BST tree recursively by in-order traversal
+	//http://blog.csdn.net/linhuanmars/article/details/23904937
 	private TreeNode helper(ArrayList<ListNode> list, int l, int r)
 	{
 	    if(l>r){
