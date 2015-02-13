@@ -1,3 +1,9 @@
+/**
+ * Given preorder and inorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+ */
 package LeetCode;
 import java.util.*;
 
@@ -7,8 +13,10 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 		int[] inorder = {2, 1};
 		new ConstructBinaryTreeFromPreorderAndInorderTraversal().buildTree(preorder, inorder);
 	}
+	//time complexity: o(n), space complexity: o(n) from the HashMap
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
 	    HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+	    //reate HashMap to let search time complexity to be o(1)	    
 	    for(int i = 0; i<inorder.length; i++){
 	    	hm.put(inorder[i], i);
 	    }
