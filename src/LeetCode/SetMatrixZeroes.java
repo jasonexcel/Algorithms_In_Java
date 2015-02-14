@@ -45,6 +45,7 @@ public class SetMatrixZeroes {
         //store first row and column info, if true, the whole row/column needs to be set zeros
         boolean rowFlag = false;
         boolean colFlag = false;
+        //set first column flag
         for(int i=0;i<matrix.length;i++)
         {
             if(matrix[i][0]==0)
@@ -53,6 +54,7 @@ public class SetMatrixZeroes {
                 break;
             }
         }
+        //set first row flag
         for(int i=0;i<matrix[0].length;i++)
         {
             if(matrix[0][i]==0)
@@ -61,6 +63,7 @@ public class SetMatrixZeroes {
                 break;
             }
         }      
+        //set first row and column to zeros based on condition
         for(int i=1;i<matrix.length;i++)
         {
             for(int j=1;j<matrix[0].length;j++)
@@ -72,6 +75,7 @@ public class SetMatrixZeroes {
                 }
             }
         }
+        //set others rows and columns to zeros based on first row and column results
         for(int i=1;i<matrix.length;i++)
         {
             for(int j=1;j<matrix[0].length;j++)
@@ -80,6 +84,7 @@ public class SetMatrixZeroes {
                     matrix[i][j] = 0;
             }
         }
+        //set first column elements to 0 if true
         if(colFlag)
         {
             for(int i=0;i<matrix.length;i++)
@@ -87,6 +92,7 @@ public class SetMatrixZeroes {
                 matrix[i][0] = 0;
             }
         }
+        //first row
         if(rowFlag)
         {
             for(int i=0;i<matrix[0].length;i++)

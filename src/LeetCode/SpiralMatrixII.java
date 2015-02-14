@@ -20,13 +20,13 @@ package LeetCode;
 public class SpiralMatrixII {
 	//better solution
 	public int[][] generateMatrixCodeGanker(int n) {
-	    if(n<0)
-	        return null;
+	    if(n<0){
+	    	return null;
+	    }	        
 	    int[][] res = new int[n][n];
 	    int levelNum = n/2;
 	    int num = 1;
-	    for(int l=0;l<levelNum;l++)
-	    {
+	    for(int l=0;l<levelNum;l++){
 	        for(int i=l;i<n-l;i++)
 	        {
 	            res[l][i] = num++;
