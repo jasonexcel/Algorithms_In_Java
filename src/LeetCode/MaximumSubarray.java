@@ -9,6 +9,20 @@ http://blog.csdn.net/linhuanmars/article/details/21314059
 package LeetCode;
 
 public class MaximumSubarray {
+	// o(n) time, o(1) space, maybe easier to understand
+	//http://blog.csdn.net/linhuanmars/article/details/21314059
+	public int maxSubArrayII(int[] A) {
+	    if(A==null || A.length==0)
+	        return 0;
+	    int global = A[0];// store the max value
+	    int local = A[0]; //store the contiguous subarray until last one
+	    for(int i=1;i<A.length;i++)
+	    {
+	        local = Math.max(A[i],local+A[i]);
+	        global = Math.max(local,global);
+	    }
+	    return global;
+	}
 	
 	public int maxSubArray(int[] A) {
 	    if(A == null || A.length == 0){
@@ -33,18 +47,6 @@ public class MaximumSubarray {
 	    }
 	    return max;
 	}
-	// maybe easier to understand
-	public int maxSubArrayII(int[] A) {
-	    if(A==null || A.length==0)
-	        return 0;
-	    int global = A[0];// store the max value
-	    int local = A[0]; //store the contiguous subarray until last one
-	    for(int i=1;i<A.length;i++)
-	    {
-	        local = Math.max(A[i],local+A[i]);
-	        global = Math.max(local,global);
-	    }
-	    return global;
-	}
+
 	
 }

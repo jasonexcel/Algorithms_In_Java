@@ -1,3 +1,8 @@
+/**
+ * You are climbing a stair case. It takes n steps to reach to the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ */
 package LeetCode;
 
 public class ClimbStairs {
@@ -9,6 +14,7 @@ public class ClimbStairs {
 		// TODO Auto-generated method stub
 		System.out.println(ClimbStairs1(1));
 	}
+	//o(n) time complexity, o(1) space complexity
     public static int ClimbStairs1(int n){
         if(n<1){
             return 0;
@@ -29,6 +35,7 @@ public class ClimbStairs {
         }
         return a;
     }
+    //o(n) space
 	public static int climbStairs2(int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
