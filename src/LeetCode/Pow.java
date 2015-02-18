@@ -1,3 +1,6 @@
+/**
+ * Implement pow(x, n).
+ */
 package LeetCode;
 
 public class Pow {
@@ -48,17 +51,19 @@ public class Pow {
         }
         
     }
+    //solid solution; o(logn) time complexity
     //http://blog.csdn.net/linhuanmars/article/details/20092829
     public double powIII(double x, int n) {
         if(n==0)
             return 1.0;
         double res = 1.0;   
-        if(n<0)
-        {
+        if(n<0){
             if(x>=1.0/Double.MAX_VALUE||x<=1.0/-Double.MAX_VALUE)
                 x = 1.0/x;
-            else
-                return Double.MAX_VALUE;
+            else{
+            	return Double.MAX_VALUE;//overflow when n<0
+            }
+                
             if(n==Integer.MIN_VALUE)
             {
                 res *= x;
@@ -72,16 +77,18 @@ public class Pow {
             isNeg = true;
         }
         x = Math.abs(x);
+        //square-based method
         while(n>0)
         {
-            if((n&1) == 1)
+            if((n&1) == 1) // equal to (n%2 == 1)
             {
-                if(res>Double.MAX_VALUE/x)
-                    return Double.MAX_VALUE;
+                if(res>Double.MAX_VALUE/x){
+                	return Double.MAX_VALUE; //overflow
+                }                    
                 res *= x;
             }
             x *= x;
-            n = n>>1;
+            n = n>>1; // equal to n=n/2;
         }
         return isNeg?-res:res;
     }
