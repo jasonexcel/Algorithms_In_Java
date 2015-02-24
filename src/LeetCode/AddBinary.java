@@ -1,3 +1,11 @@
+/**
+ * Given two binary strings, return their sum (also a binary string).
+
+For example,
+a = "11"
+b = "1"
+Return "100".
+ */
 package LeetCode;
 import java.util.Stack;
 public class AddBinary {
@@ -10,6 +18,7 @@ public class AddBinary {
 
 		System.out.println(addBinary2("10","111"));
 	}
+	//time complexity: o(max(m, n)), space complexity: o(max(m, n))
 	   public static String addBinary(String a, String b) {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
