@@ -49,7 +49,7 @@ public class MultiplyStrings {
 	    for (int i = 0; i < d.length; i++) {
 	        int digit = d[i] % 10;
 	        int carry = d[i] / 10;
-	        sb.insert(0, digit); //build the string from lower digit
+	        sb.insert(0, digit); //build the string from lower digit, insert at the place index 0
 	        if (i < d.length - 1)
 	            d[i + 1] += carry;	//carry to upper digit
 	        }
