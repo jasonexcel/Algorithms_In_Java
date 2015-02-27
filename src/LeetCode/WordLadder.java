@@ -42,7 +42,7 @@ public class WordLadder {
 	    		for(char letter='a'; letter<='z'; letter++){
 	    			if(letter!=base){
 	    				charArray[i] = letter;
-	    				String str = new String(charArray);
+	    				String str = new String(charArray); //find the possible string
 	    				if(dict.contains(str) && !used.contains(str)){
 	    					used.add(str);
 	    					from.add(str);
