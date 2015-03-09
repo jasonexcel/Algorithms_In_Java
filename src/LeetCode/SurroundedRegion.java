@@ -36,11 +36,11 @@ public class SurroundedRegion {
 	public void solve(char[][] board) {
 	    if(board==null || board.length<=1 || board[0].length<=1)
 	        return;
-	    //flood fill
+	    //use flood fill method at edge rows and columns
 	    //first and last rows
 	    for(int i=0;i<board[0].length;i++)
 	    {
-	        fill(board,0,i);
+	        fill(board,0,i); //flood fill starting from pos(0, i)
 	        fill(board,board.length-1,i);
 	    }
 	    //first and last column

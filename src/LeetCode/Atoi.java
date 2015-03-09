@@ -40,7 +40,7 @@ public class Atoi {
 	}
     public int atoi(String s) {
         s = s.trim();
-        long value = 0;
+        long value = 0; // long here
         boolean isPositive = true;
         
         for (int i = 0; i < s.length(); i++) {
