@@ -28,6 +28,7 @@ public class WordSearch {
 		// TODO Auto-generated method stub
 
 	}
+	//time complexity: O(m^2*n^2), space complexity: O(m*n)
 	//Back tracking or DFS method
 	public boolean exist(char[][] board, String word) {
         if(word==null || word.length()==0){
@@ -68,7 +69,7 @@ public class WordSearch {
     		//find the word in one of the direction, got return results 
     		return true;
     	}
-    	visited[i][j] = false;
+    	visited[i][j] = false; //reset
     	return false;
     }
 }
