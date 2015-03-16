@@ -1,5 +1,7 @@
 package basicAlgorithms;
 
+//on average, the algorithm takes O(n log n) comparisons to sort n items.
+//In the worst case, it makes O(n2) comparisons, though this behavior is rare.
 public class QuickSort {
 	
 	public static void quickSort(int[] list) {
@@ -16,8 +18,8 @@ public class QuickSort {
 	public static int partition(int arr[], int first, int last) {
 		assert(first< last);
 		int pivot = arr[last];
-		int i = first;
-		int j = first;
+		int i = first; // i - keeper, keep the position where new and less then pivot value should be placed 
+		int j = first; // j - runner
 		while (j<last) {
 			if (arr[j]<pivot) {
 				int temp = arr[i];
