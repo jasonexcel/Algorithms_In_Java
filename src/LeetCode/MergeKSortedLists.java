@@ -49,7 +49,8 @@ public class MergeKSortedLists {
     	}
     }
 
-    //my initial solution
+    //my initial solution  
+    //time complexity:O(n*k*logk)
     private ListNode mergeTwoLists(ListNode listA, ListNode listB){
     	ListNode res = new ListNode(0);
         ListNode dummy = res;
@@ -70,7 +71,6 @@ public class MergeKSortedLists {
     	}
     	if(listA != null){
     		res.next = listA;
-
     	}
     	if(listB != null){
     		res.next = listB;
@@ -79,16 +79,15 @@ public class MergeKSortedLists {
     }
     
     //http://blog.csdn.net/linhuanmars/article/details/19899259
+    //time complexity: O(n*k*logk), space complexity: O(k)
     public ListNode mergeKListsHeap(ArrayList<ListNode> lists) {
-    	
-        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>(){
-        	@Override
-                public int compare(ListNode n1, ListNode n2)
-                {
-        			//lower value first
-                    return n1.val-n2.val;
-                }
-            });
+    	Comparator<ListNode> comp = new Comparator<ListNode>() {
+    		@Override
+    		public int compare(ListNode n1, ListNode n2) {
+    			return n1.val - n2.val;
+    		}    		
+    	};
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, comp);
         
         for(int i=0;i<lists.size();i++)
         {
@@ -100,6 +99,7 @@ public class MergeKSortedLists {
         }
         ListNode head = null;
         ListNode pre = head;
+        //k*n loops
         while(heap.size()>0)
         {
         	//always 
@@ -115,7 +115,7 @@ public class MergeKSortedLists {
             }
             pre = cur;
             if(cur.next!=null)
-                heap.offer(cur.next);
+                heap.offer(cur.next);//logk time complexity
         }
         return head;
     }
