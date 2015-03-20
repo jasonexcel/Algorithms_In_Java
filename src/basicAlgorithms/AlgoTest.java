@@ -1,6 +1,7 @@
 package basicAlgorithms;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class AlgoTest {
 
@@ -9,8 +10,14 @@ public class AlgoTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		AlgoTest at = new AlgoTest();
-		at.getRow(30);
+		Stack<Integer>st = new Stack<Integer>();
+		st.empty();
+		char e = ' ';
+		String b = "c ";
+		if(b.charAt(1) == ' ') {
+			System.out.println("is empty");
+		}
+
 	}
 	public ArrayList<Integer> getRow(int rowIndex) {
         // IMPORTANT: Please reset any member data you declared, as

@@ -12,7 +12,30 @@ public class UniquePath {
 		System.out.println(up.uniquePaths(2,2));
 
 	}
-        public int uniquePaths(int m, int n) {
+	//my solution
+    public int uniquePaths(int m, int n) {
+        if(m < 1 || n < 1) {
+            return 0;
+        }
+        if(m == 1 || n == 1) {
+            return 1;
+        }
+        int[][] paths = new int[m][n];
+        paths[0][0] = 1;
+        for(int i=1; i<m; i++) {
+            paths[i][0] = 1;
+        }
+        for(int j=1; j<n; j++) {
+            paths[0][j] = 1;
+        }
+        for(int i=1; i<m; i++) {
+            for(int j=1; j<n; j++) {
+                paths[i][j] = paths[i-1][j] + paths[i][j-1];
+            }
+        }
+        return paths[m-1][n-1];
+    }
+        public int uniquePathsI(int m, int n) {
             // Start typing your Java solution below
             // DO NOT write main() function
             if(m<=0 || n<=0) return 0;

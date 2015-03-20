@@ -14,7 +14,31 @@ public class MergeSortedArrays {
 		// TODO Auto-generated method stub
 
 	}
-	 public void merge(int A[], int m, int B[], int n) {
+	//my solution
+	// starting from the end
+    public void merge(int A[], int m, int B[], int n) {
+        if(A == null || B == null || B.length == 0) {
+            return;
+        }
+        int a = m-1, b = n-1;
+        while(a>=0 && b>=0) {
+            if(A[a] > B[b]) {
+                A[a+b+1] = A[a];
+                a--;
+            }
+            else {
+                A[a+b+1] = B[b];
+                b--;
+            }
+        }
+        while(b>=0) {
+            A[b] = B[b];
+            b--;
+        }
+        return;
+    }
+    
+	 public void mergeII(int A[], int m, int B[], int n) {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
 	        while(n>0){

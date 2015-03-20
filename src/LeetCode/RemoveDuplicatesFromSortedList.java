@@ -34,7 +34,24 @@ Given 1->1->2->3->3, return 1->2->3.
 		      }
 		  }
 
-	    public ListNode deleteDuplicates(ListNode head) {
+	//my solution
+	public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode runner = head.next;
+        ListNode keeper = head;
+        while(runner != null) {
+            if(runner.val != keeper.val) {
+                keeper.next = runner;
+                keeper = keeper.next;
+            }
+            runner = runner.next;
+        }    
+        keeper.next = null;
+        return head;
+    }
+	    public ListNode deleteDuplicatesIII(ListNode head) {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
 

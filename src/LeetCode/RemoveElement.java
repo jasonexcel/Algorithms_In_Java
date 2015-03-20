@@ -11,8 +11,8 @@ public class RemoveElement {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] A = {};
-		System.out.println( removeElement(A, 2));
+		int[] A = {3};
+		System.out.println( removeElementII(A, 2));
 	}
 	
 
@@ -29,5 +29,26 @@ public class RemoveElement {
         	}
         }
         return cur;
+    }
+	
+	public static int removeElementII(int[] A, int elem) {
+        if(A == null || A.length == 0) {
+            return 0;
+        }
+        int from = 0;
+        int to = 0;
+        while(from < A.length) {
+            if(A[from] == elem) {
+                from++;
+            }
+            else {
+                if(to != from) {
+                    A[to] = A[from];
+                }
+                to++;
+                from++;
+            }
+        }
+        return to;
     }
 }

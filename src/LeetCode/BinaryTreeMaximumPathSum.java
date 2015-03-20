@@ -26,7 +26,7 @@ public class BinaryTreeMaximumPathSum {
 		// TODO Auto-generated method stub
 
 	}
-    public int maxPathSum(TreeNode root) {
+    public int maxPathSum(TreeNode root) {  	
         if(root==null){
         	return 0; 
         }
