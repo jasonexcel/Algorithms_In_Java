@@ -10,13 +10,19 @@ public class AlgoTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Stack<Integer>st = new Stack<Integer>();
-		st.empty();
-		char e = ' ';
-		String b = "c ";
-		if(b.charAt(1) == ' ') {
-			System.out.println("is empty");
+		int[] arr = {3, 7, 1, 11, 5};
+		int i = 0, j = arr.length - 1;
+		while(i<=j) {
+			i++;
+			if(i==j) {
+				System.out.println(arr[i]);
+				//return arr[i];
+			}
+			j--;
 		}
+		System.out.println(arr[j]);
+					System.console();
+
 
 	}
 	public ArrayList<Integer> getRow(int rowIndex) {

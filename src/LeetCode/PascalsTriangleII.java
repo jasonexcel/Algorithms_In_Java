@@ -1,5 +1,6 @@
 package LeetCode;
 import java.util.ArrayList;
+import java.util.List;
 public class PascalsTriangleII {
 
 	/**
@@ -7,9 +8,30 @@ public class PascalsTriangleII {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		PascalsTriangleII ins = new PascalsTriangleII();
+		ins.getRow(2);
+		System.console();
 	}
-    public ArrayList<Integer> getRow(int rowIndex) {
+	public List<Integer> getRow(int rowIndex) {
+        if(rowIndex < 0) {
+            return new ArrayList<Integer> ();
+        }
+        List<Integer> pre = new ArrayList<Integer>();
+        pre.add(1);
+        
+        for(int r=1; r<=rowIndex; r++) {
+        	List<Integer> res = new ArrayList<Integer>();
+            res.add(1);
+            for(int c=1; c<r; c++) {
+                res.add(pre.get(c-1) + pre.get(c));
+            }
+            res.add(1);
+            pre = res;
+        }
+        return pre;
+    }
+	
+    public ArrayList<Integer> getRowII(int rowIndex) {
         // Start typing your Java solution below
         // DO NOT write main() function
         int []res = new int[rowIndex+1];
@@ -31,4 +53,6 @@ public class PascalsTriangleII {
         }
         return res;
     }
+    
+    
 }

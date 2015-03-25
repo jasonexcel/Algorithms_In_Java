@@ -1,3 +1,14 @@
+/**
+ * The count-and-say sequence is the sequence of integers beginning as follows:
+1, 11, 21, 1211, 111221, ...
+
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+Given an integer n, generate the nth sequence.
+
+Note: The sequence of integers will be represented as a string.
+ */
 package LeetCode;
 
 public class CountAndSay {
@@ -10,7 +21,35 @@ public class CountAndSay {
 		countAndSay(2);
 		countAndSayII(2);
 	}
+	// code ganker
+	//time O(n*len), space O(len)
 	public static String countAndSay(int n) {
+	    if(n<=0)
+	        return "";
+	    String curRes = "1";
+	    for(int i=2;i<=n;i++)
+	    {
+	        StringBuilder res = new StringBuilder();
+	        int count = 1;
+	        for(int j=1;j<curRes.length();j++)
+	        {
+	            if(curRes.charAt(j)==curRes.charAt(j-1))
+	                count++;
+	            else
+	            {
+	                res.append(count);
+	                res.append(curRes.charAt(j-1));
+	                count = 1;
+	            }
+	        }
+	        res.append(count);
+	        res.append(curRes.charAt(curRes.length()-1));
+	        curRes = res.toString();//!!!
+	    }
+	    return curRes;
+	}
+	
+	public static String countAndSayI(int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
 		StringBuilder sb = new StringBuilder();
