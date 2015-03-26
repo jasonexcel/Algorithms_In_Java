@@ -32,7 +32,7 @@ public class CombinationSumII {
     	}
     	for(int i=index; i<num.length; i++){
     		result.add(num[i]);
-    		combinationSum2Help(num, target, sum+num[i], i+1, result, results);
+    		combinationSum2Help(num, target, sum+num[i], i+1, result, results);//!!!
     		result.remove(result.size()-1);
     	}
     }

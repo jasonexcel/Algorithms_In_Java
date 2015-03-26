@@ -8,6 +8,7 @@ Note: You can only move either down or right at any point in time.
 package LeetCode;
 
 public class MinimumPathSum {
+	//my solution
     public int minPathSum(int[][] grid) {
         if(grid == null || grid.length == 0 || grid[0].length == 0){
         	return 0;

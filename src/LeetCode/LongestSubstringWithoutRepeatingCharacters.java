@@ -26,6 +26,38 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		int a2 = a1;
 
 	}
+
+    //* my solution: hashmap or hashset
+    public int lengthOfLongestSubstringByHashMap(String s) {
+        if(s == null || s.length() == 0){
+        	return 0;
+        }
+
+        HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
+        int length = 0, maxLength = 0;
+        int start = 0;
+        for(int i=0; i<s.length(); i++){
+        	// not occur or occur before start, then increment length
+        	if(!hm.containsKey(s.charAt(i)) || (hm.containsKey(s.charAt(i)) && hm.get(s.charAt(i)) < start)){
+        		hm.put(s.charAt(i), i);
+        		length++;
+        	}
+        	// occurred after the start
+        	else{
+        		//set new start
+        		start = hm.get(s.charAt(i))+1;
+        		//update new length
+        		length = i - start+1;
+        		// !!!remove old entry, add new entry
+        		hm.remove(s.charAt(i));
+        		hm.put(s.charAt(i), i);
+        	}
+        	if(length>maxLength){
+        			maxLength = length;
+        		}
+        }
+        return maxLength;
+    }
 	//good to learn the boolean array, two pointers, but harder to understand
     public int lengthOfLongestSubstring(String s) {
         // Start typing your Java solution below
@@ -60,35 +92,4 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxLen;
     }
     
-    //* my solution: hashmap or hashset
-    public int lengthOfLongestSubstringByHashMap(String s) {
-        if(s == null || s.length() == 0){
-        	return 0;
-        }
-
-        HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
-        int length = 0, maxLength = 0;
-        int start = 0;
-        for(int i=0; i<s.length(); i++){
-        	// not occur or occur before start, then increment length
-        	if(!hm.containsKey(s.charAt(i)) || (hm.containsKey(s.charAt(i)) && hm.get(s.charAt(i)) < start)){
-        		hm.put(s.charAt(i), i);
-        		length++;
-        	}
-        	// occurred after the start
-        	else{
-        		//set new start
-        		start = hm.get(s.charAt(i))+1;
-        		//update new length
-        		length = i - start+1;
-        		// !!!remove old entry, add new entry
-        		hm.remove(s.charAt(i));
-        		hm.put(s.charAt(i), i);
-        	}
-        	if(length>maxLength){
-        			maxLength = length;
-        		}
-        }
-        return maxLength;
-    }
 }

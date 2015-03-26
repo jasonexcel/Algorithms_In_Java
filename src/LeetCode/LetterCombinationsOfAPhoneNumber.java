@@ -1,3 +1,13 @@
+/**
+ * Given a digit string, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below.
+
+Input:Digit string "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+Note:
+Although the above answer is in lexicographical order, your answer could be in any order you want.
+ */
 package LeetCode;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +31,7 @@ public class LetterCombinationsOfAPhoneNumber {
 		return ret;
 	}
     
-	//tail recursive method here?
+	//dfs
     private static void letterCombinationsHelper(String dig, int i, StringBuilder sb, ArrayList<String> arr){
     	//if visited all digits, return the method
         if(dig.length() == i) {
@@ -41,14 +51,15 @@ public class LetterCombinationsOfAPhoneNumber {
     }
     
     //iterative method
+    //假设总共有n个digit，每个digit可以代表k个字符，那么时间复杂度是O(k^n)，就是结果的数量，空间复杂度也是一样
     public List<String> letterCombinationsIteration(String digits) {
     	List<String> results = new ArrayList<String>();
     	results.add("");
     	if(digits == null || digits.length() == 0){
     		return results;
     	}
-        char[][] phoneLetters = {{' '},{'$'}, {'a','b','c'}, {'d','e','f'}, {'g','h','i'},{'j','k','l'},{'m','n','o'},{'p','q','r','s'}, {'t','u','v'},{'w','x','y','z'}};
-
+        char[][] phoneLetters = {{' '},{'$'}, {'a','b','c'}, {'d','e','f'}, {'g','h','i'},{'j','k','l'},
+        		{'m','n','o'},{'p','q','r','s'}, {'t','u','v'},{'w','x','y','z'}};
         
         for(int i=0;i<digits.length();i++){
         	int number = digits.charAt(i) - '0';
