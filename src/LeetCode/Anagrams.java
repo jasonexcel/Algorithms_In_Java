@@ -1,3 +1,8 @@
+/**
+ * Given an array of strings, return all groups of strings that are anagrams.
+
+Note: All inputs will be in lower-case.
+ */
 package LeetCode;
 
 import java.util.*;
@@ -25,6 +30,7 @@ public class Anagrams {
     	}    	
     	    	
     	for(ArrayList<String> arrList : hm.values()){
+    		//!!! at least two strings
     		if(arrList.size()>1){
     			for(String str : arrList){
     				result.add(str);
