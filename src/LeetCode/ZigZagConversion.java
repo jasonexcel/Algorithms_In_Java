@@ -9,7 +9,42 @@ public class ZigZagConversion {
 		// TODO Auto-generated method stub
 
 	}
-    public String convert(String s, int nRows) {
+	// my solution, time complexity : O(len), space: O(1)
+	public String convert(String s, int nRows) {
+        if(s == null || s.length() == 0) {
+            return s;
+        }
+        if(nRows < 2) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        int len = s.length();
+        for(int i=0; i<len; i+=2*nRows-2) {
+            sb.append(s.charAt(i));
+        }
+        
+        for(int row=1; row<nRows-1; row++) {
+            //assume first column for current row is evenColumn, 0-based counting
+            boolean oddColumn = false;
+            for(int index=row; index<len;) {
+                sb.append(s.charAt(index));
+                if(oddColumn) {
+                    index += 2*row;
+                    oddColumn = false;
+                }
+                else{
+                    index += 2*(nRows-1-row);//move from  even column to odd column
+                    oddColumn = true;
+                }
+            }
+        }
+        for(int i=nRows-1; i<len; i+=2*nRows-2) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
+    }
+	
+    public String convertII(String s, int nRows) {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(s == null) return null;

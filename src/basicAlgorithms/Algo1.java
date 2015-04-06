@@ -15,9 +15,15 @@ public class Algo1 {
 		System.out.println("len=" + len);
 		String str = new String("1");
 		
+		int[] letters = new int[128];
+		letters['a'] = 3;
+		letters["bdc".charAt(1)] = 2;
 		a.atoi(str);
+		
+		boolean t[] = new boolean[25];
+
+		int[] a2 = {3,5};
 	}
-	
 	public int lengthOfLastWord(String s) {
         // Note: The Solution object is instantiated only once and is reused by each test case.
 		int i;
