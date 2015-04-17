@@ -49,6 +49,7 @@ public class Permutations {
         		buildResults(num, used, res, results);
         		//back from the recursion, restore the last state
         		res.remove(res.size()-1);
+        		// !!!
         		used[i] = false;
     		}
     		

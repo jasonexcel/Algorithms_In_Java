@@ -21,6 +21,7 @@ public class RotateImage {
 		// TODO Auto-generated method stub
 
 	}
+	// col size == row size for this question
     public void rotate(int[][] matrix) {
         if(matrix == null){
         	return;

@@ -26,6 +26,7 @@ public class SpiralMatrix {
 		    ArrayList<Integer> res = new ArrayList<Integer>();
 		    if(matrix == null || matrix.length==0 || matrix[0].length==0)
 		        return res;
+		    // !!!
 		    int min = Math.min(matrix.length, matrix[0].length);
 		    int levelNum = min/2;
 		    for(int level=0;level<levelNum;level++)
@@ -54,6 +55,7 @@ public class SpiralMatrix {
 		        {
 		            for(int i=levelNum; i<matrix[0].length-levelNum;i++)
 		            {
+		            	// add last row from left to right
 		                res.add(matrix[levelNum][i]);
 		            }
 		        }
@@ -61,6 +63,7 @@ public class SpiralMatrix {
 		        {
 		            for(int i=levelNum; i<matrix.length-levelNum;i++)
 		            {
+		            	// add last column from top to bottom
 		                res.add(matrix[i][levelNum]);
 		            }
 		        }

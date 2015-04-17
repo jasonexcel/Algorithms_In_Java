@@ -18,7 +18,7 @@ public class PopulatingNextRightPointersinEachNodeII {
         }
 
         TreeLinkNode p = root.next;
-        //find the next node for current node's children
+        //find the next node for current node's children, not found, then p is null
         while (p != null) {
             if (p.left != null) {
                 p = p.left;
@@ -42,4 +42,51 @@ public class PopulatingNextRightPointersinEachNodeII {
         connect(root.right);
         connect(root.left);
     }
+	
+	// hard 
+	//http://blog.csdn.net/linhuanmars/article/details/23510601
+	public void connectConstantSpace(TreeLinkNode root) {
+	    if(root == null)
+	        return;
+	    TreeLinkNode lastHead = root;
+	    TreeLinkNode pre = null;
+	    TreeLinkNode curHead = null; // find curHead
+	    while(lastHead!=null)
+	    {
+	        TreeLinkNode lastCur = lastHead;
+	        while(lastCur != null)
+	        {
+	            if(lastCur.left!=null)
+	            {
+	                if(curHead == null)
+	                {
+	                    curHead = lastCur.left; // get curHead here
+	                    pre = curHead;
+	                }
+	                else
+	                {
+	                    pre.next = lastCur.left;
+	                    pre = pre.next;
+	                }
+	            }
+	            if(lastCur.right!=null)
+	            {
+	                if(curHead == null)
+	                {
+	                    curHead = lastCur.right;
+	                    pre = curHead;
+	                }
+	                else
+	                {
+	                    pre.next = lastCur.right;
+	                    pre = pre.next;
+	                }
+	            }                
+	            lastCur = lastCur.next;
+
+	        }
+	        lastHead = curHead;
+	        curHead = null;
+	    }
+	}
 }

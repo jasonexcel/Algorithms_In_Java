@@ -44,7 +44,7 @@ public class BattleshipGame {
 		int id;
 		GameBoard board;
 
-		AttackResponse Attack(GameBoard rivalBoard, Coordination shot) {
+		AttackResponse Attack(GameBoard rivalBoard, Coordination shot) throws Exception {
 			if(!rivalBoard.checkCoordinationInfo(shot)) {
 				return AttackResponse.MISS;
 			}

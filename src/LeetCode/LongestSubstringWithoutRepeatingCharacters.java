@@ -16,6 +16,8 @@ public class LongestSubstringWithoutRepeatingCharacters {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		LongestSubstringWithoutRepeatingCharacters ins = new LongestSubstringWithoutRepeatingCharacters();
+		System.out.println(ins.lengthOfLongestSubstringIII("abba"));
 		String s = "abc";
 		String b = s;
 		String c = new String(s);
@@ -92,4 +94,31 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return maxLen;
     }
     
+    // my array solution
+    public int lengthOfLongestSubstringIII(String s) {
+    	if(s == null || s.length() == 0) {
+            return 0;
+        }
+        int[] positions = new int[256];
+        for(int i=0; i<positions.length; i++) {
+            positions[i] = -1;
+        }
+        int start = 0;
+        int cur = 0;
+        int maxLen = 0;
+        while(cur < s.length()) {
+            int position = positions[s.charAt(cur)];
+            // if the current char occurs at the index of the start or after, then update the "start position"
+            if(position != -1 && position >= start) {
+                if(cur - start > maxLen) {
+                    maxLen = cur - start;
+                }
+                start = position + 1;
+            }
+
+            positions[s.charAt(cur)] = cur;
+            cur++;
+        }
+        return Math.max(maxLen, cur - start);
+    }
 }

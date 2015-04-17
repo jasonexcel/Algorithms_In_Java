@@ -59,6 +59,18 @@ public class PopulatingNextRightPointersinEachNode {
         connect(root.left);
         connect(root.right);
     }
+    // my dfs
+    public void connectII(TreeLinkNode root) {
+        if(root == null || root.left == null) {
+            return;
+        }
+        root.left.next = root.right;
+        if(root.next != null) {
+            root.right.next = root.next.left;
+        }
+        connect(root.left);
+        connect(root.right);
+    }
     
     //constant space by level iteration
     public void connectConstantSpace(TreeLinkNode root) {
@@ -77,6 +89,7 @@ public class PopulatingNextRightPointersinEachNode {
             		curHead = curHead.next;
             		continue;
         		}
+        		// break when this level end (curHead.next is null)
         		break;
     		}
 			//next level

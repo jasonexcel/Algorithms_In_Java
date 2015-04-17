@@ -32,7 +32,7 @@ public class MaximumDepthOfBinaryTree {
         int leftDepth = maxDepth(root.left);
         int rightDepth = maxDepth(root.right);        
         return leftDepth>rightDepth ? leftDepth+1 : rightDepth+1;
-    }    
+    }    	
 	
 	public int maxDepthByBFS(TreeNode root) {
         // Note: The Solution object is instantiated only once and is reused by each test case.

@@ -52,6 +52,7 @@ public class MinimumDepthOfBinaryTree {
         while(!q.isEmpty()){
         	TreeNode n = q.remove();
         	curL--;
+        	// !!!
         	if(n.left==null&&n.right==null){
         		return minHeight;
         	}

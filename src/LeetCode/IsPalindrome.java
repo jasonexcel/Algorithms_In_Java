@@ -3,14 +3,14 @@
  */
 package LeetCode;
 
-public class IsPalidrome {
+public class IsPalindrome {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		IsPalidrome ip = new IsPalidrome();
+		IsPalindrome ip = new IsPalindrome();
 		ip.isPalindrome(1325335231);
 
 	}

@@ -101,4 +101,58 @@ public class Atoi {
         
     }
 
+    // my solution
+    public int atoiIII(String str) {
+        if(str == null || str.length() == 0) {
+            return 0;
+        }
+        // skip headding zeros
+        int i = 0;
+        while(str.charAt(i) == ' ' && i < str.length()) {
+            i++;
+        }
+        
+        boolean isNegative = false;
+        if(str.charAt(i) == '-') {
+            isNegative = true;
+            i++;
+        }
+        else if(str.charAt(i) == '+') {
+            i++;
+        }
+        int res = 0;
+        while(i < str.length()) {
+            char tempChar = str.charAt(i);
+            if('0'<= tempChar && tempChar <= '9') {
+                int digit = tempChar - '0';
+                if(validIntegerResult(res, digit, isNegative)){
+                    res = res * 10 + digit;
+                }
+                else {
+                    return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                }
+            }
+            else {
+                return isNegative ? 0 - res : res;
+            }
+            i++;
+            
+        }
+        
+        return isNegative ? 0 - res : res;
+    }
+    
+    private boolean validIntegerResult(int res, int digit, boolean isNegative) {
+        if(!isNegative) {
+            if(res > (Integer.MAX_VALUE - digit) / 10) {
+                return false;
+            }
+        }
+        else {
+            if(res >- ((digit + Integer.MIN_VALUE) / 10)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

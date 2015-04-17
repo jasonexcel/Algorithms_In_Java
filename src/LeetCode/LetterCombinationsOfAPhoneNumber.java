@@ -18,7 +18,8 @@ public class LetterCombinationsOfAPhoneNumber {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		letterCombinations("3");
+		LetterCombinationsOfAPhoneNumber ins = new LetterCombinationsOfAPhoneNumber();
+		List<String> test = ins.letterCombinationsIII("");
 	}
     private static char[][] map = new char[][] { { 'a', 'b', 'c' }, { 'd', 'e', 'f' },
     		{ 'g', 'h', 'i' }, { 'j', 'k', 'l' }, { 'm', 'n', 'o' },
@@ -63,6 +64,7 @@ public class LetterCombinationsOfAPhoneNumber {
         
         for(int i=0;i<digits.length();i++){
         	int number = digits.charAt(i) - '0';
+        	// must initiate temp
         	List<String> temp = new ArrayList<String>();
         	//for each old result and possible letter
         	for(int j=0;j<results.size();j++){
@@ -71,8 +73,40 @@ public class LetterCombinationsOfAPhoneNumber {
         			temp.add(results.get(j) + phoneLetters[number][k]);
         		}
         	}
+        	//assign temp to new result
         	results = temp;
         }
         return results;
     }
+    
+   // my dfs 
+   private char[][] phoneChar = {{' '}, {'$'}, {'a', 'b', 'c'}, {'d', 'e', 'f'}, 
+       					{'g', 'h', 'i'}, {'j', 'k', 'l'}, {'m', 'n', 'o'}, 
+       					{'p', 'q', 'r', 's'}, {'t', 'u', 'v'}, {'w', 'x', 'y', 'z'}};
+   public List<String> letterCombinationsIII(String digits) {
+       
+   	List<String> results = new ArrayList<String>();        					
+   	if(digits == null || digits.length() == 0) {
+   		results.add("");
+   		return results;
+   	}       
+   	StringBuilder res = new StringBuilder(); 					
+       buildString(results, res, digits, 0);
+       return results;
+   }
+
+   private void buildString(List<String> results, StringBuilder res, String digits, int digitIndex) {
+   	   if(digitIndex == digits.length()) {
+   	   	results.add(res.toString());    		
+   	   	return;
+   	   }
+   	   int dig = digits.charAt(digitIndex) - '0';
+   	   char[] availableChar = phoneChar[dig];
+   	   for(int j=0; j<availableChar.length; j++) {
+          	res.append(availableChar[j]);
+          	buildString(results, res, digits, digitIndex + 1);
+          	res.deleteCharAt(digitIndex);
+          }
+   }
+    
 }
