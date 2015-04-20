@@ -31,24 +31,24 @@ public class ValidNumber {
 		        case '+':
 		        case '-':
 		            if(prevChar!='e'&&i!=0)
-		                return false;
+		                return false; 	//32-5 false; 32e-5 true; 
 		            if(prevChar=='e'&&i==end)
-		                return false;
+		                return false; //32e-  false
 		            if (i==0&&nextChar=='e')
-		                return false;
+		                return false; //-e32 false
 		            break;
 		        case '.':
 		            if(decimalFound || eFound)
-		                return false;
+		                return false; // 32.5.3 false; 32e2.5 false
 		            if(i>=end && i<=0)
-		                return false;
+		                return false; // .32 false; 32. false
 		            if(!Character.isDigit(prevChar) && !Character.isDigit(nextChar))
-		                return false;
+		                return false; // -.32 false, 
 		            decimalFound = true;
 		            break;
 		        case 'e':
 		            if(eFound)
-		                return false;
+		                return false; //3e2e5
 		            if(!Character.isDigit(prevChar) && !Character.isDigit(nextChar)
 		                &&nextChar!='-'|| end==i || i==0){
 		                        return false;                        
@@ -65,5 +65,4 @@ public class ValidNumber {
 		    }
 		    return true;
 		}
-
 }

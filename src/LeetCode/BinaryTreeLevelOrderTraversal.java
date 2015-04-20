@@ -21,8 +21,8 @@ import java.util.*;
 }
  // time complexity: o(n), space complexity: o(n), since the last level has n/2 nodes
 public class BinaryTreeLevelOrderTraversal {
-    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
-    	ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
+    public List<List<Integer>> levelOrder(TreeNode root) {
+    	List<List<Integer>> results = new ArrayList<List<Integer>>();
     	if(root==null){
     	    return results;
     	}
