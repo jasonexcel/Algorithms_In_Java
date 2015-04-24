@@ -89,6 +89,7 @@ public class MergeKSortedLists {
     	};
         PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, comp);
         
+        // build a heap with n heads of linked list
         for(int i=0;i<lists.size();i++)
         {
             ListNode node = lists.get(i); 
@@ -114,8 +115,10 @@ public class MergeKSortedLists {
                 pre.next = cur;
             }
             pre = cur;
-            if(cur.next!=null)
-                heap.offer(cur.next);//logk time complexity
+            if(cur.next!=null) {
+            	heap.offer(cur.next);//logk time complexity
+            }
+                
         }
         return head;
     }

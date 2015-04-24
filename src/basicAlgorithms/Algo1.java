@@ -10,6 +10,9 @@ import LeetCode.SymmetricTree.TreeNode;
 
 public class Algo1 {
 	public static void main(String[] args) {
+		int abc = 3;
+		int cba = - abc;
+		System.out.println(cba);
 		Algo1 a = new Algo1();
 		int len = a.lengthOfLastWord("a ");
 		System.out.println("len=" + len);

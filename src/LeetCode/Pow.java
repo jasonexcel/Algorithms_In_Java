@@ -29,11 +29,13 @@ public class Pow {
         }
         
     }
+    // first choice
     //no difference to the first one
     public static double powII(double x, int n) {
         if(n == 0) return 1.0;
         // warning: Integer.MIN_VALUE needs to be treated differently
-        // since -Integer.MIN_VALUE is it self
+        // since -Integer.MIN_VALUE is it self, 
+        // Integer.MIN_VALUE % 2 == 0, even number 
         if(n == Integer.MIN_VALUE) {
         	double temp = pow(x, -n/2);
         	return temp*temp;
@@ -54,12 +56,15 @@ public class Pow {
     //solid solution; o(logn) time complexity
     //http://blog.csdn.net/linhuanmars/article/details/20092829
     public double powIII(double x, int n) {
-        if(n==0)
-            return 1.0;
+        if(n==0){
+            return 1.0;	
+        }
+        
         double res = 1.0;   
         if(n<0){
-            if(x>=1.0/Double.MAX_VALUE||x<=1.0/-Double.MAX_VALUE)
-                x = 1.0/x;
+            if(x>=1.0/Double.MAX_VALUE||x<=1.0/-Double.MAX_VALUE) {
+            	x = 1.0/x;
+            }                
             else{
             	return Double.MAX_VALUE;//overflow when n<0
             }

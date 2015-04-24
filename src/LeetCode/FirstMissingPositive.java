@@ -26,7 +26,7 @@ public class FirstMissingPositive {
         for(int i=0; i<len; i++){
         	if(A[i]>0 && A[i]<=len){
             	int temp = A[A[i]-1];
-            	//avoid infinite loop
+            	//avoid infinite loop !!!
             	if(A[i] != temp){
             		A[A[i]-1] = A[i];
             		A[i] = temp;
