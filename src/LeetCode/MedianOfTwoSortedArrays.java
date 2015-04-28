@@ -4,10 +4,6 @@
  */
 package LeetCode;
 
-/**
- * 
- *
- */
 public class MedianOfTwoSortedArrays {
 	//O(m+n) time complexity, o(m+n) space complexity -- can be optimized to o(1) 
     public double findMedianSortedArrays(int A[], int B[]) {
@@ -77,9 +73,9 @@ public class MedianOfTwoSortedArrays {
         	//return the sorted first one
         	return Math.min(A[aStart],B[bStart]);
         }
-            
+        //!!!    
         int posA = Math.min(k/2,m);
-        int posB = k-posA; // make sure posA + posB = K
+        int posB = k-posA; // !!! make sure posA + posB = K
         if(A[aStart+posA-1]==B[bStart+posB-1]){
         	return A[aStart+posA-1];
         }           

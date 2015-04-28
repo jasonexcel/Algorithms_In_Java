@@ -1,6 +1,7 @@
 package basicAlgorithms;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class AlgoTest {
@@ -10,17 +11,24 @@ public class AlgoTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = {3, 7, 1, 11, 5};
-		int i = 0, j = arr.length - 1;
-		while(i<=j) {
-			i++;
-			if(i==j) {
-				System.out.println(arr[i]);
-				//return arr[i];
-			}
-			j--;
-		}
-		System.out.println(arr[j]);
+
+
+		Scanner sc = new Scanner(System.in);
+/*		//String str = sc.nextLine();
+		String str2 = sc.next();
+		System.out.println(str2);*/
+		
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int t = 0; t < n; t++) {
+            arr[t] = sc.nextInt();
+            System.out.println();
+        }
+        for(int elem : arr) {
+        	System.out.print(elem + ", ");
+        }
+        
+
 					System.console();
 
 

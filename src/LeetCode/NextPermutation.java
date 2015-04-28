@@ -53,18 +53,18 @@ public class NextPermutation {
         return;
        }
        
-      //reverse the array between 'from' to 'to'
-       private void reverse(int[] num, int from, int to){
-           while(from<to){
-               swap(num, from, to);
-               from++;
-               to--;
-           }
+   //reverse the array between 'from' to 'to'
+   private void reverse(int[] num, int from, int to){
+       while(from<to){
+           swap(num, from, to);
+           from++;
+           to--;
        }
-       // swap the value of array at index a and b
-       private void swap(int[] num, int a, int b){
-           int temp = num[a];
-               num[a] = num[b];
-               num[b] = temp;
-       }
+   }
+   // swap the value of array at index a and b
+   private void swap(int[] num, int a, int b){
+       int temp = num[a];
+           num[a] = num[b];
+           num[b] = temp;
+   }
 }
