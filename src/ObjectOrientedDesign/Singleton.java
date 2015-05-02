@@ -1,4 +1,6 @@
 package ObjectOrientedDesign;
+
+// private constructor; constant instance; static get method
 //thread safe
 public class Singleton {
 	//holder, lazy loading
@@ -12,5 +14,18 @@ public class Singleton {
 	//get method
 	public static Singleton getInstance() {
 		return SingletonHolder.INSTANCE;
+	}
+}
+
+//thread safe
+class AmericaPresidentII {
+	private static final AmericaPresidentII thePresident = new AmericaPresidentII();
+
+	private AmericaPresidentII() {
+		
+	}
+
+	public static AmericaPresidentII getPresident() {
+		return thePresident;
 	}
 }

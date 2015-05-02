@@ -29,6 +29,7 @@ public class WordSearch {
 
 	}
 	//time complexity: O(m^2*n^2), space complexity: O(m*n)
+	//m和n是矩阵的行数和列数，把矩阵每个元素看成一个结点，所以就是O(m*n)个结点，每个结点四条边，所以边E的数量也是O(m*n)的~ DFS: O(E+V) time complexity
 	//Back tracking or DFS method
 	public boolean exist(char[][] board, String word) {
         if(word==null || word.length()==0){

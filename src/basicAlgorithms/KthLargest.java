@@ -1,5 +1,6 @@
 package basicAlgorithms;
 // implement quick sort method to get partition
+// O(N) time, stack space
 public class KthLargest {
 	public static void sort(int[] arr, int start, int end, int index) {
 		assert(end > start);
@@ -14,28 +15,28 @@ public class KthLargest {
 	}
 	
 	private static int partition(int[] arr, int start, int end) {
-		int pivot = arr[end];
-		int i = start;
-		int j = start;
-		while (j< end) {
-			if(arr[j]<pivot) {
+		int res = start;
+		int pivotal = arr[end];
+		for(int i=start; i<end; i++) {
+			if(arr[i] < pivotal) {
 				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-				i++; 
-				j++;
+				arr[i] = arr[res];
+				arr[res] = temp;
+				res++;
 			}
-			else j++;
 		}
-		int temp = arr[i];
-		arr[i] = arr[end];
-		arr[end] = temp;
-		return i;	
+		// !!! swap the pivotal(last element) with the partition point result
+		if(res != end) {
+			arr[end] = arr[res];
+			arr[res] = pivotal;
+		}
+		return res;
 	}
 	
+	
 	public static void main(String[] args) {
-		int[] arr = new int[] {7,3,9,6,5,12,34};
-		int k = 1;
+		int[] arr = new int[] {7,3,9,6,5,34,12};
+		int k = 5;
 		int index = arr.length - k;
 		sort(arr, 0, arr.length-1, index);
 		System.out.println(k + "th largest = " + arr[index]);

@@ -39,7 +39,7 @@ public class QuickSort {
 	
 	/** A test method */
 	public static void main(String[] args) {
-	int[] list = {7,3,9,6};
+	int[] list = {7,3,9,6, -2, 58};
 	    quickSort(list);
 	for (int i = 0; i < list.length; i++)
 	      System.out.print(list[i] + " ");

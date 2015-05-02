@@ -261,8 +261,7 @@ class BinaryTree {
 			while (localStack.isEmpty() == false)
 				globalStack.push(localStack.pop());
 		} // end while isRowEmpty is false
-		System.out
-				.println("......................................................");
+		System.out.println("......................................................");
 	} // end displayTree()
 	// -------------------------------------------------------------
 } // end class Tree

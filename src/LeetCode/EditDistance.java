@@ -1,5 +1,6 @@
 /**
- * Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)
+ * Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation
+ *  is counted as 1 step.)
 
 You have the following 3 operations permitted on a word:
 
@@ -8,6 +9,11 @@ b) Delete a character
 c) Replace a character
 
  * http://www.cnblogs.com/springfor/p/3896167.html
+ * 动态数组dp[word1.length+1][word2.length+1]
+
+dp[i][j]表示从word1前i个字符转换到word2前j个字符最少的步骤数。
+
+假设word1现在遍历到字符x，word2遍历到字符y（word1当前遍历到的长度为i，word2为j）。
  * 1. x==y，那么不用做任何编辑操作，所以dp[i][j] = dp[i-1][j-1]
 
 2. x != y

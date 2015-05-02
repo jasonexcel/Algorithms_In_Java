@@ -33,6 +33,7 @@ public class ValidateBinarySearchTree {
         pre.add(null);
         return helper(root, pre);
     }
+    // in-order
     private boolean helper(TreeNode root, ArrayList<Integer> pre)
     {
         if(root == null)
@@ -102,6 +103,7 @@ public class ValidateBinarySearchTree {
 	    }
 
 	    // my solution
+	    // pre-order: validate root; then go left, then go right
 	    public boolean isValidBSTIII(TreeNode root) {
 	        return isValidBSTHelper(root, (long)Integer.MAX_VALUE+1, (long)Integer.MIN_VALUE-1);
 	    }

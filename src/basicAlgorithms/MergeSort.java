@@ -2,6 +2,7 @@ package basicAlgorithms;
 
 import java.util.Arrays;
 
+//O(NlogN) time, worst O(N) space using array, O(logN) using linked list and stack
 public class MergeSort {
 	/** The method for sorting the numbers */
 	public static void mergeSort(int[] list) {
@@ -43,8 +44,10 @@ public class MergeSort {
 			temp[current3++] = list2[current2++];
 		return temp;
 	}
+	
+	
 	//better detail to handle divide and conquer
-	private void recMergeSort(int[] list, int lBound, int rBound){
+	public void recMergeSort(int[] list, int lBound, int rBound){
 		if(lBound>=rBound){
 			return;
 		}

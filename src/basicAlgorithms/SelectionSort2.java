@@ -13,10 +13,8 @@ public class SelectionSort2 {
 	}
 	
 	public static void sort(int[] array) {
-		int index = 0;
 		int length = array.length;
-		for (int i = index; i < length-1; i++) {
-			++index;
+		for (int i = 0; i < length-1; i++) {
 			int currentMinIndex = i;
 			for (int j = i+1; j < length; j++) {
 				if (array[j] < array[currentMinIndex]) {

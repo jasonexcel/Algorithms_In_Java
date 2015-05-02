@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PermutationsII {
 	public static void main(String[] args){
-		int[] num = {1,1,2};
+		int[] num = {1,2,2, 2};
 		new PermutationsII().permuteUnique(num);
 	}
 	
@@ -25,11 +25,11 @@ public class PermutationsII {
 	    if(num==null && num.length==0){
 	    	return results;
 	    }
-	    int[] sortedNum = Arrays.copyOf(num, num.length);
+	    int[] sortedNum = Arrays.copyOfRange(num, 0, num.length);
 	    Arrays.sort(sortedNum);
 	    boolean[] used = new boolean[sortedNum.length];
 	    List<Integer> result = new ArrayList<Integer>();
-	    helper(sortedNum, new boolean[sortedNum.length], result, results);
+	    helper(sortedNum, used, result, results);
 	    return results;
 	}
 	private void helper(int[] num, boolean[] used, List<Integer> result, List<List<Integer>> results)
@@ -42,8 +42,9 @@ public class PermutationsII {
 	    for(int i=0;i<num.length;i++)
 	    {
 	    	// i is not the first value; value at i is same as the former one; 
-	    	// ! and the former one is not used, so you cannot use current value 
+	    	// and the former one is not used, so you cannot use current value 
 	    	// at i, skip it
+	    	// !!!!
 	        if(i>0 && num[i]==num[i-1] && !used[i-1]) {
 	        	continue;
 	        }

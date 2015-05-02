@@ -29,7 +29,9 @@ public class TopKByQuickSort {
    void getTopKMinBySort(int a[],int first,int end,int k){
       if(first<end){
           int partitionIndex=partition(a,first,end);
-          if(partitionIndex==k-1)return;
+          if(partitionIndex==k-1) {
+        	  return;
+          }
           else if(partitionIndex>k-1) {
         	  getTopKMinBySort(a,first,partitionIndex-1,k);
           }        	  
@@ -41,7 +43,7 @@ public class TopKByQuickSort {
    }
    public static void main(String []args){
       int a[]={2,20,3,7,9,1,17,18,0,14};
-      int k=1;
+      int k=3;
       new TopKByQuickSort().getTopKMinBySort(a,0,a.length-1,k);
       for(int i=0;i<k;i++){
          System.out.print(a[i]+" ");

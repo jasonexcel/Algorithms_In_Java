@@ -45,6 +45,7 @@ public class CombinationSum {
 		for(int i=step; i<candidates.length; i++){
 			result.add(candidates[i]);
 			combinationSumHelp(candidates, target, sum+candidates[i], i, result, results);
+			//no need to modify the sum here, since sum isn't changes, and we pass sum_candidates[i] into the method
 			result.remove(result.size() - 1);
 		}
 		return; // not needed

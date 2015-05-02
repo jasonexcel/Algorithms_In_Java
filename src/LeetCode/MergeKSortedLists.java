@@ -38,6 +38,7 @@ public class MergeKSortedLists {
         }
     	int size = lists.size();
     	if(size>1){
+    		// subList: from - inclusive, to - exclusive
     		List<ListNode> left = lists.subList(0, size/2);
     		List<ListNode> right = lists.subList(size/2, size);
     		ListNode listA = mergeKLists(left);
@@ -45,6 +46,7 @@ public class MergeKSortedLists {
     		return mergeTwoLists(listA, listB);
     	}
     	else{
+    		// return the only list
     		return lists.get(0);
     	}
     }
