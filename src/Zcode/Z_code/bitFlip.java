@@ -1,4 +1,4 @@
-package RealInterviewQuestion;
+package Zcode.Z_code;
 
 import java.io.*;
 import java.util.*;

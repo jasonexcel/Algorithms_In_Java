@@ -7,8 +7,9 @@
 package LeetCode;
 
 public class LongestPalindromicSubstring {
-	//General solution, o(n^2) time complexity  
-	// iterating through the center of the substring
+	//General solution, o(n^2) time complexity, O(1) space
+	// iterating through the center of the substring from left to right
+	//http://blog.csdn.net/linhuanmars/article/details/20888595
 	public String longestPalindrome(String s) {
         if(s == null || s.length() == 0){
         	return "";

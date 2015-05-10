@@ -1,4 +1,4 @@
-package RealInterviewQuestion;
+package Zcode.Z_code;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
