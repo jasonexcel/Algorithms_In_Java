@@ -55,6 +55,7 @@ public class ValidPalindrome {
 	        return true;
 	    return false;
 	}
+	// clean 
 	private boolean isSame(char c1, char c2)
 	{
 	    if(c1>='A' && c1<='Z')

@@ -10,18 +10,18 @@ import LeetCode.SymmetricTree.TreeNode;
 
 public class Algo1 {
 	public static void main(String[] args) {
+		
+		int a = 3;
+		char b = '2';
+		int c = a + b;
+		char d = (char) (a + b);
+		
+		
 		int abc = 3;
 		int cba = - abc;
 		System.out.println(cba);
-		Algo1 a = new Algo1();
-		int len = a.lengthOfLastWord("a ");
-		System.out.println("len=" + len);
-		String str = new String("1");
-		
-		int[] letters = new int[128];
-		letters['a'] = 3;
-		letters["bdc".charAt(1)] = 2;
-		a.atoi(str);
+		//Algo1 a = new Algo1();
+
 		
 		boolean t[] = new boolean[25];
 

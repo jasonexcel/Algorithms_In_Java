@@ -17,12 +17,41 @@ public class MultiplyStrings {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MultiplyStrings ins = new MultiplyStrings();
-		String num1 = "32", num2 = "17";
+		String num1 = "9", num2 = "9";
 		System.out.println(ins.multiply(num1, num2));
 
 	}
+	// preferred
+    public String multiply(String num1, String num2) {
+        if(num1 == null || num1.length() == 0 || num2 == null || num2.length() == 0) {
+            return "";
+        }
+        if(num1.equals("0") || num2.equals("0")) {
+            return "0";
+        }
+        int len1 = num1.length();
+        int len2 = num2.length();
+        int[] res = new int[len1+len2];
+        for(int i=0; i<len1; i++) {
+            for(int j=0; j<len2; j++) {
+                int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                res[i+j+1] += mul;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int index=len1+len2-1; index>=1; index--) {
+            char curChar = (char)(res[index]%10 + '0');
+            sb.append(curChar);
+            res[index-1] += res[index] / 10;
+        }
+        if(res[0] != 0) {
+            sb.append(res[0]);
+        }
+        return sb.reverse().toString();
+    }
+    
 	//time o(n*n), space o(n)
-	public String multiply(String num1, String num2) {
+	public String multiplyI(String num1, String num2) {
 		if(num1 == null || num2 == null || num1.length()==0 || num2.length()==0){
 	    	return "";
 	    }	        
@@ -88,5 +117,5 @@ public class MultiplyStrings {
 	        num = num/10;
 	    }
 	    return res.reverse().toString();
-	}
+	}	
 }

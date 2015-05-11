@@ -5,13 +5,14 @@ public class SubstringAnagrams {
 	/**
 	 * @param args
 	 * 
-// String input (M)2 n5 i! h- R5 a
+// String input (M)
 // String pattern (N)
 
 // # output me the number of substrings in input that is an anagram of pattern
 // input：abcba
 // pattern：abc  
 // ~> 2   {abc, cba}
+ * http://www.1point3acres.com/bbs/thread-133151-1-1.html
 	 */
 	public static final int MAX = 256;
 	public static void main(String[] args) {
