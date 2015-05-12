@@ -19,59 +19,71 @@ public class ShortestDistanceToGuardedRoom {
 2 -1 2
 1 0  1. 
 	 */
-	
-	public int[][] shortestDistance(int[][] status) {
-		if(status == null) {
-			return null;
-		}
-		return status;
-	}
-	
-	private static int[][] dir = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
-	
-	public static void minDistance(int[][] R) {
-		Queue<Integer> queue = new LinkedList<>();
-		int m = R.length, n = R[0].length;
-		for(int i=0; i<m; i++) {
-			for(int j=0; j<n; j++) {
-				if(R[i][j] == 2) {
-					// 1-D sequence 
-					queue.offer(i*n+j);
-				}
-			}
-		}
-		int OFFSET = 10;
-		while(!queue.isEmpty()) {
-			int val = queue.poll();
-			int r = val / n;
-			int c = val % n;
-			for(int k=0; k<dir.length; k++) {
-				int i = dir[k][0] + r;
-				int j = dir[k][1] + c;
-				if(i>=0 && i<m && j>=0 && j<n && R[i][j] == 1) {
-					R[i][j] = R[r][c] == 2 ? OFFSET+1 : R[r][c]+1;
-					queue.offer(i*n+j);
-				}
-			}
-		}
-		for(int i=0; i<m; i++) {
-			for(int j=0; j<n; j++) {
-				if(R[i][j] == 2) {
-					R[i][j] = 0;
-				} else if(R[i][j] == 0) {
-					R[i][j] = -1;
-				} else {
-					R[i][j] -= OFFSET;
-				}
-			}
+	public static void main(String[] args) {
+		//int[][] R = new int[][]{{1,2,1}, {1,0,1}, {1,2,1}};
+		int[][] R = {{2, 1, 0}, 
+					 {0, 1, 2}, 
+					 {1, 1, 1}};
+		int[][] res = shortestDistance(R);
+		for(int i=0; i<res.length; i++) {
+			System.out.println(Arrays.toString(res[i]));
 		}
 	}
 
-	public static void main(String[] args) {
-		int[][] R = new int[][]{{1,2,1}, {1,0,1}, {1,2,1}};
-		minDistance(R);
-		for(int i=0; i<R.length; i++) {
-			System.out.println(Arrays.toString(R[i]));
+	public static int[][] shortestDistance(int[][] status) {
+		if(status == null) {
+			return null;
 		}
-	}
+		int row = status.length;
+		int col = status[0].length;
+		int[][] res = new int[row][col];
+		boolean[][] visited = new boolean[row][col];
+		// !!! four direction
+		int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+		int depth = 0;
+		int curCount = 0;
+		int nextCount = 0;
+		Queue<Integer> q = new LinkedList<Integer>();
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++) {
+				if(status[i][j] == 2) {
+					int index = i * col + j;					
+					q.offer(index);
+					curCount++;
+				}
+				else {
+					res[i][j] = -1;
+				}
+			}
+		}
+		while(!q.isEmpty()) {
+			int index = q.poll();
+			int rIndex = index / col;
+			int cIndex = index % col;
+			if(!visited[rIndex][cIndex]) {
+				if(status[rIndex][cIndex] == 0) {
+					visited[rIndex][cIndex] = true;
+				}
+				else {
+					res[rIndex][cIndex] = depth;
+					visited[rIndex][cIndex] = true;
+					for(int path=0; path<4; path++) {
+						int neightborRowIndex = rIndex + dir[path][0];
+						int neightborColIndex = cIndex + dir[path][1];
+						if(neightborRowIndex >=0 && neightborRowIndex < row && neightborColIndex >=0 && neightborColIndex < col) {
+							q.offer(neightborRowIndex * col + neightborColIndex);
+							nextCount++;
+						}
+					}
+				}				
+			}
+			curCount--;
+			if(curCount == 0) {
+				depth++;
+				curCount = nextCount;
+				nextCount = 0;
+			}
+		}
+		return res;
+	}	
 }

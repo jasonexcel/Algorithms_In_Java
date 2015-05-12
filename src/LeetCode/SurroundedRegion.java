@@ -63,8 +63,11 @@ public class SurroundedRegion {
 	}
 	private void fill(char[][] board, int i, int j)
 	{
-	    if(board[i][j]!='O')
-	        return;
+	    if(board[i][j]!='O') {
+	    	//'#' or 'X'
+	    	return;
+	    }	        
+	    //hanlde only when coordination is 'O'
 	    board[i][j] = '#';
 	    LinkedList<Integer> queue = new LinkedList<Integer>();
 	    //encode the coordination of the position
