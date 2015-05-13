@@ -61,6 +61,7 @@ public class SudokuSolver {
 	    }
 	    return false;
 	}
+	// validate the current char with existing chars
 	private boolean isValid(char[][] board, int i, int j)
 	{
 	    for(int k=0;k<9;k++)

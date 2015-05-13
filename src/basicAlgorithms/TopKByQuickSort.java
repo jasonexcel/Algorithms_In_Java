@@ -42,8 +42,8 @@ public class TopKByQuickSort {
       }
    }
    public static void main(String []args){
-      int a[]={2,20,3,7,9,1,17,18,0,14};
-      int k=3;
+      int a[]={2,20,2,7,9,1,17,18,0,14};
+      int k=8;
       new TopKByQuickSort().getTopKMinBySort(a,0,a.length-1,k);
       for(int i=0;i<k;i++){
          System.out.print(a[i]+" ");
