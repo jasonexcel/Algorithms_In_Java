@@ -4,6 +4,14 @@ package Zcode.Z_code;
 import java.util.Iterator;
 import java.util.Stack;
 
+/**
+ * Input: A binary search tree, consisting of integers.  And a number k
+Output: True if there are two nodes a and b in the tree, such that a.value + b.value = k
+            False otherwise
+             time: O(n), space: O(logn)
+ * @author sjia
+ *
+ */
 //http://www.geeksforgeeks.org/find-a-pair-with-given-sum-in-bst/
 public class TwoSumBalancedBST {
 

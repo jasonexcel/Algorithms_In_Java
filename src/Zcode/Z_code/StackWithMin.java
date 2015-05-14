@@ -6,7 +6,7 @@ import java.util.*;
  * 实现一个数据结构包含三个功能，push， pop， getmin，time complexity均要为O(1)， 不可以调用API，自己实现了double linkedlist，而且要求只用一个list
  */
 
-public class StackWithMin<T> extends MyStack<T> implements Comparable<T>{
+public class StackWithMin<T> extends MyStack<T>{
 
 	MyStack<T> ms;
 	public StackWithMin() {

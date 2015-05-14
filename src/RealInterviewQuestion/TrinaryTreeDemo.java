@@ -1,19 +1,19 @@
 package RealInterviewQuestion;
 
-class Node{
+class Node2{
 	int val; // value
-	public Node lNode; // left node
-	public Node mNode; // middle node
-	public Node rNode; // right node
+	public Node2 lNode; // left node
+	public Node2 mNode; // middle node
+	public Node2 rNode; // right node
 	
 	public boolean deleted;
-	public Node(int value){
+	public Node2(int value){
 		val = value;
 	}
 }
 
 class TrinaryTree{
-	private Node root;
+	private Node2 root;
 	
 	public TrinaryTree(){
 		root = null;
@@ -21,12 +21,12 @@ class TrinaryTree{
 	
 	// using iterative method
 	public void insert(int value){
-		Node temp = new Node(value);
+		Node2 temp = new Node2(value);
 		if(root == null){
 			root = temp;
 		}
 		else{
-			Node cur = root;
+			Node2 cur = root;
 			while(true){
 				if(value < cur.val){
 					if(cur.lNode == null){
@@ -57,7 +57,7 @@ class TrinaryTree{
 		deleteValue(root, value);
 	}
 	
-	private Node deleteValue(Node node, int value){
+	private Node2 deleteValue(Node2 node, int value){
 		if(node == null) {
 			return null;
 		}
@@ -78,7 +78,7 @@ class TrinaryTree{
 		}
 		else{
 			// find the node with minimum value in the right children  
-			Node min = minNode(node.rNode);
+			Node2 min = minNode(node.rNode);
 			node.val = min.val;
 			node.rNode = deleteValue(node.rNode, min.val);
 		}		
@@ -90,7 +90,7 @@ class TrinaryTree{
 		displayTree(root);
 	}	
 	
-	private Node minNode(Node node){
+	private Node2 minNode(Node2 node){
 		
 		while(node != null){
 			if(node.lNode != null){
@@ -100,7 +100,7 @@ class TrinaryTree{
 		return node;
 	}	
 	
-	private void displayTree(Node node){
+	private void displayTree(Node2 node){
 		if(node != null){			
 			displayTree(node.lNode);
 			System.out.print(node.val + ", ");
