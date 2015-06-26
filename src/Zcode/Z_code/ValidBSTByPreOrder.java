@@ -8,14 +8,45 @@ public class ValidBSTByPreOrder {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = {1, 2, 3};
+		int[] arr = { 10, 12, 7, 16, 25};
 		//List<Integer> minMax = new ArrayList<Integer>();
-		
-		if(helper(arr, 0, arr.length-1)) {
+		ValidBSTByPreOrder ins = new ValidBSTByPreOrder();
+		if(ins.isValidPreorder(arr)) {
 			System.out.println("Yes");
 		}
+		else {
+			System.out.println("No");
+		}
+		if(ins.isPreOrderBST(arr)) {
+			System.out.println("Yes");
+		}
+		else {
+			System.out.println("No");
+		}
 	}
-	// preferred
+	// my solution
+	public boolean isValidPreorder(int[] arr) {
+		if(arr == null || arr.length == 0) {
+			return false;
+		}
+		int[] index = {0};
+		validationByPreorder(arr, index, (long) Integer.MIN_VALUE - 1, (long) Integer.MAX_VALUE + 1);
+		return index[0] == arr.length;
+	}
+	
+	private void validationByPreorder(int[] arr, int[] index, long min, long max) {
+		if(index[0] == arr.length){
+			return;
+		}
+		int curVal = arr[index[0]];
+		if(curVal > min && curVal < max) {
+			index[0]++;
+			validationByPreorder(arr, index, min, curVal);
+			validationByPreorder(arr, index, curVal, max);
+		}
+	}
+	
+	//
 	int pos;
 	public boolean isPreOrderBST(int[] array) {
 	    if (array == null || array.length == 0) {

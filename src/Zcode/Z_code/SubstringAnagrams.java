@@ -35,6 +35,7 @@ public class SubstringAnagrams {
 			countP[pattern.charAt(i)]++;
 			countS[source.charAt(i)]++;
 		}
+		// check the first one
 		if(isAnagrams(countP, countS)) {
 			count++;
 		}

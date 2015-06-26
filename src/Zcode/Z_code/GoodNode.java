@@ -65,13 +65,14 @@ class WeightedQuickUnionFind {
 	public WeightedQuickUnionFind(int N) {
 		this.parent = new int[N];
 		for(int i=0; i<N; i++) {
+			// root itself
 			parent[i] = i;
 		}
 		this.size = new int[N];
 		Arrays.fill(size, 1);
 		components = N;
 	}
-	
+	// find root
 	public int find(int num) {
 		while(parent[num] != num) {
 			num = parent[num];

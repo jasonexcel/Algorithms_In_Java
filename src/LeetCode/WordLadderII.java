@@ -71,7 +71,7 @@ public class WordLadderII {
 		      String curStr = cur.str;
 		      curLevel = cur.level;
 		      if(found && curLevel > finalLevel) {
-		         break;
+		         break; //end the search
 		      }
 		      if (curLevel > preLevel) {
 		         unvisitedSet.removeAll(visitedCurLevel);

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import LeetCode.BalancedBinarayTree.TreeNode;
+
 /**
  * @author Shaun
  *
@@ -26,7 +28,7 @@ public class BinaryTreePostOrderTraversal {
 //	        return res;
 //	    }
 	    LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
-	    TreeNode pre = null;//!!!
+	    TreeNode pre = null;//!!! previous visited node
 	    while(root != null || !stack.isEmpty()){
 	        if(root!=null){
 	            stack.push(root);

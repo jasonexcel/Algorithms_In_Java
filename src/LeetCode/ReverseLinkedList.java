@@ -1,5 +1,7 @@
 package LeetCode;
 
+import java.util.*;
+
 import LeetCode.ReverseLinkedListII.ListNode;
 
 public class ReverseLinkedList {
@@ -23,6 +25,18 @@ public class ReverseLinkedList {
 	        next = null;                 
 	    }                                
 	}  
+	// preferred
+	public ListNode reverseList(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = head;
+        while(cur != null) {
+            ListNode temp = cur.next;
+            cur.next = dummy.next;
+            dummy.next = cur;
+            cur = temp;
+        }
+        return dummy.next;
+    }
 	
 	// prev 		1 -> 2 -> 3
     public ListNode reverse(ListNode head) {

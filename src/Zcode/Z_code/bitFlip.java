@@ -3,7 +3,8 @@ package Zcode.Z_code;
 import java.io.*;
 import java.util.*;
 /**
- * bits flip. 大意就是有一串0,1的数组，然后可以取中间任意一段，把0置换为1,1置换为0. 问这样一次置换之后，这组数组最多还有多少个1
+ * bits flip. 大意就是有一串0,1的数组，然后可以取中间任意一段，把0置换为1,1置换为0. 问这样一次置换之后，
+ * 这组数组最多还有多少个1
  * @author Shaun
  *
  */

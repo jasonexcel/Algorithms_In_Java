@@ -24,7 +24,7 @@ public class WordLadder {
 
 	public int ladderLength(String start, String end, Set<String> dict) {
 	    Queue<String> from = new LinkedList<String>(); // store the path       
-	    HashSet<String> used = new HashSet<String>(); // stores the used words
+	    HashSet<String> used = new HashSet<String>(); // stores the used words, visited node in the graph
 	    from.add(start);
 	    int step = 1; // step from beginning to end, if beginning = end, then set as 1
 	    int curL = 1, nextL = 0; // the number of elements in current level and next level 

@@ -18,6 +18,7 @@ s2的形式是一个字母加上一个符号，正号代表有两个前面的字
 		String s2 = "a+b+c-";
 		System.out.println(numDistinctDP(s1, s2));
 	}
+	
 	public static int numDistinctDP(String s1, String s2){
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();

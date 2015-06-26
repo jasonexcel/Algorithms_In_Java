@@ -24,7 +24,7 @@ public class ReverseInteger {
 	    int num = Math.abs(x);
 	    int res = 0;
 	    while(num!=0) {
-	    	//to avoid res*10 + num%10 > Integer.MAX_VALUE, chech the condition here
+	    	//to avoid res*10 + num%10 > Integer.MAX_VALUE, check the condition here
 	        if(res>(Integer.MAX_VALUE-num%10)/10){
 	        	return 0;
 	        }

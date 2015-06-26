@@ -14,13 +14,42 @@ import java.util.List;
 public class SubsetsII {
 	public static void main(String args[]){
 		SubsetsII ins = new SubsetsII();
-		int[] num = {1,1,1};
+		int[] num = {1};
 		ins.subsetsWithDup(num);
 	}
+	
+    // preferred
+    public List<ArrayList<Integer>> subsetsWithDup(int[] nums) {
+        List<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        res.add(new ArrayList<Integer>());
+        if(nums==null || nums.length==0) {
+            return res;
+        }
+        Arrays.sort(nums);
+        int startIndex = 0;
+        int partitionIndex = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(i>0 && nums[i] == nums[i-1]) {
+                startIndex = partitionIndex;
+            }
+            else {
+                startIndex = 0;
+            }
+            partitionIndex = res.size();
+            for(int j=startIndex; j<partitionIndex; j++) {
+                ArrayList<Integer> temp = new ArrayList<Integer>(res.get(j));
+                temp.add(nums[i]);
+                res.add(temp);
+            }
+            
+        }
+        return res;
+    }
+    
 	//my solution
 	// resultsA always holds values exclude current index;
 	// resultsB will hold only solutions with current index number
-    public List<List<Integer>> subsetsWithDup(int[] num) {
+    public List<List<Integer>> subsetsWithDupIII(int[] num) {
     	if(num==null){
         	return null;
         }
@@ -63,5 +92,35 @@ public class SubsetsII {
         }
         resultsA.addAll(resultsB);
         return resultsA; 
+    }    
+    
+    // code ganker
+    public ArrayList<ArrayList<Integer>> subsetsWithDupII(int[] num) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        res.add(new ArrayList<Integer>());
+        if(num==null || num.length==0)
+            return res;
+        Arrays.sort(num);
+        int start = 0;
+        for(int i=0;i<num.length;i++)
+        {
+            int size = res.size();
+            for(int j=start;j<size;j++)
+            {
+                ArrayList<Integer> newItem = new ArrayList<Integer>(res.get(j));
+                newItem.add(num[i]);
+                res.add(newItem);
+            }
+            if(i<num.length-1 && num[i]==num[i+1])
+            {
+            	// !!!
+                start = size;
+            }
+            else
+            {
+                start = 0;
+            }
+        }
+        return res;
     }
 }

@@ -8,17 +8,18 @@ Note: next() and hasNext() should run in average O(1) time and uses O(h) memory,
 package LeetCode;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
-public class BSTIterator {
+public class BSTIterator implements Iterator<Object>{
 	int curIndex;
-    List<TreeNode> list;
+    List<TreeNode> list; //!!!
     
     public BSTIterator(TreeNode root) {
         list = new ArrayList<TreeNode>();
         dfs(root, list);
-        curIndex = 0;
+        curIndex = 0; //!!!
     }
     
     private void dfs(TreeNode root, List<TreeNode> res) {
@@ -39,13 +40,19 @@ public class BSTIterator {
     }
 
     /** @return the next smallest number */
-    public int next() {
+    public Object next() {
         if(curIndex < list.size()) {
         	// increment by one
             return list.get(curIndex++).val;
         }
         return Integer.MAX_VALUE;
     }
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 //Iterative method
@@ -68,13 +75,13 @@ public class BSTIterator {
         TreeNode cur = root;
         while(!tStack.isEmpty() || cur != null) {
             if(cur != null) {
-                tStack.push(cur);
-                cur = cur.left;
+                tStack.push(cur); // push
+                cur = cur.left; // go left
             }
             else {
-                TreeNode temp = tStack.pop();
-                res.add(temp);
-                cur = temp.right;
+                TreeNode temp = tStack.pop(); // pop to get parent
+                res.add(temp); // visit parent
+                cur = temp.right; // go to right 
             }
         }
         return res;

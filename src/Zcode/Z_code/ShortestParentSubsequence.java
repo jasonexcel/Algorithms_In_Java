@@ -23,9 +23,9 @@ public class ShortestParentSubsequence {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "abacd";
+		String str = "aqweabadc";
 		String query = "abc";
-
+		System.out.println(findShortestSubsequence(str, query));
 	}
 	
 	public static String findShortestSubsequence(String str, String query) {
@@ -35,7 +35,7 @@ public class ShortestParentSubsequence {
 		if(str == null || str.length() == 0) {
 			return null;
 		}
-		Set<Character> set = new HashSet<Character>();
+/*		Set<Character> set = new HashSet<Character>();
 		for(int i=0; i<query.length(); i++) {
 			set.add(query.charAt(i));
 		}
@@ -44,8 +44,35 @@ public class ShortestParentSubsequence {
 			if(set.contains(str.charAt(i))) {
 				sb.append(str.charAt(i));
 			}
+		}*/
+		int sLen = str.length();
+		int qLen = query.length();
+		int subSeqS = 0;
+		int subSeqL = Integer.MAX_VALUE;
+		int qIndex = 0;
+		for(int i=0; i<=sLen-qLen; i++) {
+			qIndex = 0;
+			for(int j=i; j<sLen; j++) {
+				if(j-i+1>subSeqL) {
+					break;
+				}
+				if(str.charAt(j) == query.charAt(qIndex)) {
+					qIndex++;
+					if(qIndex == qLen) {
+						if(j-i+1<subSeqL) {
+							subSeqL = j-i+1;
+							subSeqS = i;
+						}
+						break;
+					}
+					
+				}
+			}
 		}
-		// TODO
-		return null;
+		if(subSeqL <= sLen) {
+			return str.substring(subSeqS, subSeqS+subSeqL);
+		}
+		
+		return "";
 	}
 }

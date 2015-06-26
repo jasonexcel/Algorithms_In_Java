@@ -106,7 +106,7 @@ public class Atoi {
         if(str == null || str.length() == 0) {
             return 0;
         }
-        // skip headding zeros
+        // skip heading zeros
         int i = 0;
         while(str.charAt(i) == ' ' && i < str.length()) {
             i++;

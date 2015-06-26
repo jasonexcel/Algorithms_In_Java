@@ -1,5 +1,8 @@
 /**
- * 
+ * implement strStr().
+
+Returns the index of the first occurrence of needle in haystack,
+ or -1 if needle is not part of haystack.
  */
 package LeetCode;
 
@@ -15,7 +18,7 @@ public class ImplementStrStr {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String haystack = " This is a test Test.";
-		String needle = " test  ";
+		String needle = " test ";
 		ImplementStrStr ins = new ImplementStrStr();
 		System.out.println(ins.strStr(haystack, needle));
 	}

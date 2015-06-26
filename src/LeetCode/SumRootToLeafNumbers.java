@@ -32,6 +32,8 @@ public class SumRootToLeafNumbers {
 	public int sumNumbers(TreeNode root) {
 	    return helper(root,0);
 	}
+	
+	// sum means the result from root to current val
 	private int helper(TreeNode root, int sum)
 	{
 	    if(root == null)
@@ -42,6 +44,7 @@ public class SumRootToLeafNumbers {
 	}
 	
 	//my solution
+	// top down
     public int sumNumbersII(TreeNode root) {
         int[] sum = {0};
         if(root != null){

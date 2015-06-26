@@ -1,8 +1,37 @@
+/**
+ * Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+
+For example,
+If n = 4 and k = 2, a solution is:
+
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+ */
 package LeetCode;
 
 import java.util.*;
 
 public class Combinations {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Combinations ins = new Combinations();
+		ArrayList<ArrayList<Integer>> results = ins.combine(3,2);
+		System.out.println(results.size()+ " groups");
+		for(ArrayList<Integer> list : results) {
+			for(int str : list) {				
+					System.out.print(str+", ");
+			}
+			System.out.println();
+		}
+	}
 	
     public ArrayList<ArrayList<Integer>> combine(int n, int k) {
         ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();

@@ -16,7 +16,7 @@ import java.util.Map;
 public class MajorityNumber {
 	
 	public static void main(String[] args) {
-		int[] num = {1, 2, 3, 1, 5, 7, 7, 1, 5};
+		int[] num = {1,2,3,4,1,2,3,4,1};//{1, 2, 3, 1, 5, 7, 7, 1, 5};
 		List<Integer> list = new ArrayList<Integer>();
 		for(int e : num) {
 			list.add(e);
@@ -95,6 +95,7 @@ public class MajorityNumber {
 		}
 		else return candidacies[2][0];
 	}
+	// k 0-based
 	public static int findKthElement(int[] a, int start, int end, int k) {
 		if(a[start] == a[end]) {
 			return a[start];

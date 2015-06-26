@@ -85,8 +85,8 @@ public class SearchForARange {
         {
             return res;
         }
-        int ll = 0;
-        int lr = A.length-1;
+        int ll = 0; // final left index
+        int lr = A.length-1; // assistance index
         while(ll<=lr)
         {
             int m = (ll+lr)/2;

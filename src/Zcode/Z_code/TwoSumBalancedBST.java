@@ -132,8 +132,9 @@ public class TwoSumBalancedBST {
 	}
 
 	public boolean isPairPresent(int target) {
-		return isPairPresent(root, target) || isPairPresent(root.left, target)
-				|| isPairPresent(root.right, target);
+		return isPairPresent(root, target); 
+		//|| isPairPresent(root.left, target)
+				//| isPairPresent(root.right, target);
 	}
 
 	private boolean isPairPresent(Node x, int target) {
@@ -165,6 +166,6 @@ public class TwoSumBalancedBST {
 		tree.put(12);
 		tree.put(16);
 		tree.put(25);
-		System.out.println("Is sum pair present:" + tree.isPairPresent(20));
+		System.out.println("Is sum pair present:" + tree.isPairPresent(24));
 	}
 }

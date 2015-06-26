@@ -64,10 +64,10 @@ public class FlipTree {
 	
 	public TreeNode upsideDownBinaryTree(TreeNode root) {
 		TreeNode parent = null;
-		TreeNode parentRight = null;
+		TreeNode parentRight = null; //right sibling
 		return upsideDownBinaryTree(root, parent, parentRight); 
 	}
-	// visited n/2 + 1 nodes, left side of the tree
+	// visited n/2 + 1 nodes, just left side of the tree, 
 	private TreeNode upsideDownBinaryTree(TreeNode cur, TreeNode parent, TreeNode parentRight) {
 		if (cur == null) {
 			return parent; //find the left leaf node and return it

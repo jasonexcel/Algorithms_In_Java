@@ -22,7 +22,7 @@ public class MinDistance {
                         }
                         lastA = i;
                 } else if(s.equals(B)) {
-                        /* remember last A's position */
+                        /* remember last B's position */
                         if(lastA != -1) {
                                 minDist = Math.min(minDist, i - lastA);
                         }

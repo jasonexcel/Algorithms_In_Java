@@ -54,4 +54,22 @@ public class Subsets {
         }
         return results;
     }	
+	
+	public static List<List<Integer>> subsetsDFS(int[] S) {
+		Arrays.sort(S);
+		List<List<Integer>> results = new ArrayList<List<Integer>>();
+		List<Integer> res = new ArrayList<Integer>();
+		combHelper(results, res, 0, S);
+		return results;
+	}
+	private static void combHelper(List<List<Integer>> results, List<Integer> res, int step, int[] arr) {
+		for(int i=step; i<arr.length; i++) {
+			res.add(arr[i]);
+			step++;
+			combHelper(results, res, step, arr);
+			res.remove(res.size()-1);
+		}
+		List<Integer> temp = new ArrayList<Integer>(res);
+		results.add(temp);		
+	}
 }

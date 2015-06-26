@@ -111,6 +111,16 @@ public class ValidateBinarySearchTree {
 	        if(root == null) {
 	            return true;
 	        }
+	        if(root.val>=leftMax || root.val <= rightMin) {
+	            return false;
+	        }
+	        return isValidBSTHelper(root.left, root.val, rightMin) && isValidBSTHelper(root.right, leftMax, root.val);
+	    }
+	    
+	    private boolean isValidBSTHelperII(TreeNode root, long leftMax, long rightMin) {
+	        if(root == null) {
+	            return true;
+	        }
 	        if(root.left != null) {
 	            if(root.left.val >= root.val || root.left.val <= rightMin) {
 	                return false;
