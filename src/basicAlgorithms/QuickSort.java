@@ -18,7 +18,7 @@ public class QuickSort {
 	public static int partition(int arr[], int first, int last) {
 		assert(first< last);
 		int pivot = arr[last];
-		int i = first; // i - keeper, keep the position where new and less then pivot value should be placed 
+		int i = first; // i - keeper, keep the position where new and less than pivot value should be placed 
 		int j = first; // j - runner
 		while (j<last) {
 			if (arr[j]<pivot) {
@@ -39,11 +39,32 @@ public class QuickSort {
 	
 	/** A test method */
 	public static void main(String[] args) {
-	int[] list = {7,3,9,6, -2, 58};
-	    quickSort(list);
+	int[] list = {7,3,9,6, -2, 58, 0, 5};
+	    //quickSort(list);
+	    quickSortII(list, 0, list.length-1);
 	for (int i = 0; i < list.length; i++)
 	      System.out.print(list[i] + " ");
-	  }
+	}
+	
+	public static void quickSortII(int[] arr, int start, int end) {
+		if(start >= end) {
+			return;
+		}	
+		int pivotal = arr[end];
+		int partition = start;
+		for(int i = start; i <= end - 1; i++) {
+			int cur = arr[i]; 
+			if(cur < pivotal) {
+				arr[i] = arr[partition];
+				arr[partition] = cur;
+				partition++;
+			}
+		}   
+		arr[end] = arr[partition];
+		arr[partition] = pivotal;
+		quickSort(arr, start, partition-1);
+		quickSort(arr, partition+1, end);
+		}
 }
 			
 			

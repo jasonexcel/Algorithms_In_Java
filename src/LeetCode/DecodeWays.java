@@ -48,6 +48,7 @@ public class DecodeWays {
 	    return num2;
 	}
 	//dynamic programming
+	// preferred
 	public int numDecodings1(String s) {
 		if (s.length() == 0 || s.charAt(0) == '0') {
 			return 0;
