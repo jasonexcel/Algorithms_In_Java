@@ -45,7 +45,7 @@ public class PopulatingNextRightPointersinEachNode {
 	    TreeLinkNode(int x) { val = x; }            
 	}                                               
 	
-	//DFS works, but violate the constant space rule
+	//DFS works, but violates the constant space rule
     public void connect(TreeLinkNode root) {
         if(root == null){
             return;
@@ -70,6 +70,28 @@ public class PopulatingNextRightPointersinEachNode {
         }
         connect(root.left);
         connect(root.right);
+    }
+    // preferred
+    public void connectBest(TreeLinkNode root) {
+        if(root == null || root.left == null) {
+            return;
+        }
+        TreeLinkNode curNode = root;
+        TreeLinkNode leftMost = root;
+        while(curNode != null) {
+            while(curNode != null) {
+                if(curNode.left != null) {
+                    curNode.left.next = curNode.right;
+                }
+                if(curNode.right != null) {
+                    curNode.right.next = curNode.next == null ? null : curNode.next.left;
+                }
+                curNode = curNode.next;
+            }
+            
+            leftMost = leftMost.left;
+            curNode = leftMost;
+        }
     }
     
     //constant space by level iteration
@@ -97,5 +119,6 @@ public class PopulatingNextRightPointersinEachNode {
 			curLevel = curHead;
     	}
     }
+    
     
 }
