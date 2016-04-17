@@ -16,7 +16,12 @@ public class Sort {
 		}
 	}
 
-
+/**
+ * 
+ * @param arr: Array needed to be sorted
+ * @param low: lower bound of the possible values
+ * @param high: upper bound of the possible values
+ */
 	public static void countingSort(int[] arr, int low, int high)
 	{
 		// this will hold all possible values, from low to high
