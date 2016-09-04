@@ -3,12 +3,12 @@ package basicAlgorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-class TreeNode {
+class CharTreeNode {
 	char val;
-	TreeNode left;
-	TreeNode right;
-	
-	public TreeNode(char val) {
+	CharTreeNode left;
+	CharTreeNode right;
+
+	public CharTreeNode(char val) {
 		this.val = val;
 	}
 }
@@ -18,7 +18,7 @@ public class BinaryTreeSerialization {
 		//char[] arr = {'a', 'b', 'c', '#', '#',  '#', 'd', '#', '#'};
 
 		int[] index = {0};
-		TreeNode root = DeserializeTree(arr, index);
+		CharTreeNode root = DeserializeTree(arr, index);
 		List<Character> list = new ArrayList<Character>();
 		SerializeTree(root, list);
 		for(char c : list) {
@@ -28,7 +28,7 @@ public class BinaryTreeSerialization {
 		
 	}
 	// from array to tree
-	public static TreeNode DeserializeTree(char[] arr, int[] index) {
+	public static CharTreeNode DeserializeTree(char[] arr, int[] index) {
 		int i = index[0];
 		if(i >= arr.length) {
 			return null;
@@ -36,7 +36,7 @@ public class BinaryTreeSerialization {
 		if(arr[i] == '#') {
 			return null;
 		}
-		TreeNode cur = new TreeNode(arr[i]); 
+		CharTreeNode cur = new CharTreeNode(arr[i]);
 		index[0]++;
 		cur.left = DeserializeTree(arr, index);
 		index[0]++;
@@ -44,7 +44,7 @@ public class BinaryTreeSerialization {
 		return cur;		
 	}
 	// from tree to arraylist
-	public static void SerializeTree(TreeNode cur, List<Character> list) {
+	public static void SerializeTree(CharTreeNode cur, List<Character> list) {
 		if(cur == null) {
 			list.add('#');
 		}

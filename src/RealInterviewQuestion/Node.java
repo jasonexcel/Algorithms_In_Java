@@ -118,7 +118,7 @@ class Node<T> implements CompactTreeBuilder<T> {
         }
         //Queue<Node<T>> queue = new Queue<Node<T>>();
         ArrayList<Integer> result = new ArrayList<Integer>();
-        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        Queue<CharTreeNode> q = new LinkedList<CharTreeNode>();
         q.add(root);
         // l1 - length of nodes in current level; l2 - length of nodes in next level
         int l1 = 1, l2 = 0;

@@ -31,4 +31,23 @@ public class JumpGameII {
     	}
     	return jumpedStep;
     }
+
+	public int jumpGood(int[] nums) {
+		if(nums == null || nums.length == 0) {
+			return 0;
+		}
+		int left = 0;
+		int right = 1;
+		int count = 0;
+		while(right < nums.length) {
+			int max = left;
+			for( int i = left; i < right; i++) {
+				max = Math.max(max, i + nums[i]);
+			}
+			left = right;
+			right = max + 1;
+			count++;
+		}
+		return count;
+	}
 }

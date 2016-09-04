@@ -88,14 +88,14 @@ public class SymmetricTree {
          if(root == null){
          	return true;
          }
-         Queue<TreeNode> s1 = new LinkedList<TreeNode>(),
-        		 		 s2 = new LinkedList<TreeNode>();
+         Queue<TreeNode> s1 = new LinkedList<>(),
+        		 		 s2 = new LinkedList<>();
          
-         s1.add(root.left);
-         s2.add(root.right);
+         s1.offer(root.left);
+         s2.offer(root.right);
          while(!s1.isEmpty() && !s2.isEmpty()){
-         	TreeNode n1 = (TreeNode) s1.poll();
-         	TreeNode n2 = (TreeNode) s2.poll();
+         	TreeNode n1 = s1.poll();
+         	TreeNode n2 = s2.poll();
          	// for this comparison, they meet the requirement, continue comparing
          	if(n1==null&&n2==null){
          	    continue;

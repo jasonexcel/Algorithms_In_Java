@@ -28,7 +28,9 @@ import java.util.*;
 public class Subsets {
 	public static void main(String[] args){
 		Subsets ins = new Subsets();
-		int[] S = {0,3, 1};
+
+		int[] S = {1, 2 ,3};
+		subsetsDFS(S);
 		System.out.print(Arrays.toString(S));
 	}
 	

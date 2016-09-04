@@ -9,12 +9,12 @@ package LeetCode;
 import java.util.*;
 
 ////Definition for binary tree
-//class TreeNode {
+//class CharTreeNode {
 //	int val;
-//	TreeNode left;
-//	TreeNode right;
+//	CharTreeNode left;
+//	CharTreeNode right;
 //
-//	TreeNode(int x) {
+//	CharTreeNode(int x) {
 //		val = x;
 //	}
 //}

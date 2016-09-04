@@ -6,11 +6,11 @@ package LeetCode;
 import java.util.*;
 /**
  * Definition for binary tree
- * public class TreeNode {
+ * public class CharTreeNode {
  *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     CharTreeNode left;
+ *     CharTreeNode right;
+ *     CharTreeNode(int x) { val = x; }
  * }
  */
  class TreeNode {

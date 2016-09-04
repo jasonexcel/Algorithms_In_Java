@@ -61,7 +61,7 @@ public class BSTIterator implements Iterator<Object>{
     List<TreeNode> list;
     
     public BSTIteratorII(TreeNode root) {
-        //list = new ArrayList<TreeNode>();
+        //list = new ArrayList<CharTreeNode>();
         list = convertToList(root);
         curIndex = 0;
     }

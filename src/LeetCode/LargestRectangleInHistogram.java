@@ -30,6 +30,7 @@ public class LargestRectangleInHistogram {
         for(int i=0; i<len; i++){
         	int h = height[i];
         	int left = i, right = i;
+            //trick to avoid duplicate calculation
         	while(left>=0 && height[left]>=h){
         		left--;
         	}

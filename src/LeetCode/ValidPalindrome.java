@@ -16,6 +16,7 @@ public class ValidPalindrome {
 
 	/**
 	 * @param args
+	 * str.split("^[0-9a-zA-Z]");
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

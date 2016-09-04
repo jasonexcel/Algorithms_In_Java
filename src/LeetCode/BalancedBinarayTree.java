@@ -30,9 +30,8 @@ public class BalancedBinarayTree {
             return true;
         }
         return treeDepth(root) != -1;
-        
     }
-    
+
     // return -1 if the tree is not balanced, else return a non-negative number
     private int treeDepth(TreeNode n) {
         if(n == null) {

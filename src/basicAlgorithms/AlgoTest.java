@@ -19,6 +19,8 @@ public class AlgoTest {
 
 //
 
+
+
 //		Scanner sc = new Scanner(System.in);
 ///*		//String str = sc.nextLine();
 //		String str2 = sc.next();
@@ -57,6 +59,7 @@ public class AlgoTest {
 		String doc = "the      quick brown '#fox'!  I jumps over the lazy dog";
 		ins.wordCountII(doc);
 
+		System.out.println(ins.findTheDifference("aabc", "aabac"));
 		System.console();
 
 
@@ -209,5 +212,29 @@ public class AlgoTest {
 
 		}
 		return val;
+	}
+
+
+	public char findTheDifference(String s, String t) {
+		HashMap<Character, Integer> chars = new HashMap<Character, Integer>();
+
+		for(int i = 0; i<s.length(); i++) {
+			if(chars.containsKey(s.charAt(i))) {
+				chars.put(s.charAt(i), chars.get(s.charAt(i)) + 1);
+			} else {
+				chars.put(s.charAt(i), 1);
+			}
+		}
+		for(int i=0; i<t.length(); i++) {
+			if(chars.containsKey(t.charAt(i)) && chars.get(t.charAt(i)) > 1) {
+				chars.put(t.charAt(i), chars.get(t.charAt(i)) - 1);
+			} else if(chars.containsKey(t.charAt(i))){
+				chars.remove(t.charAt(i));
+			} else {
+				return t.charAt(i);
+			}
+
+		}
+		return t.charAt(0);
 	}
 }

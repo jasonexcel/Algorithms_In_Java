@@ -27,7 +27,7 @@ public class UniqueBinarySearchTreesII {
 	    ArrayList<TreeNode> res = new ArrayList<TreeNode>();
 	    if(left>right)
 	    {
-	    	//add null tree here to end the left or right value for TreeNode
+	    	//add null tree here to end the left or right value for CharTreeNode
 	        res.add(null);
 	        return res;
 	    }

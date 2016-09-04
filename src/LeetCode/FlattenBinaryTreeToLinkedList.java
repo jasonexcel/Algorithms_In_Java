@@ -35,11 +35,11 @@ import LeetCode.SymmetricTree.TreeNode;
 
 /**
  * Definition for binary tree
- * public class TreeNode {
+ * public class CharTreeNode {
  *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     CharTreeNode left;
+ *     CharTreeNode right;
+ *     CharTreeNode(int x) { val = x; }
  * }
  */
 /* use stack to save sequence, pre-order visit, prepend node to the right of the parent at the end
