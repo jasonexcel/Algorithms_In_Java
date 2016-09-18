@@ -48,6 +48,7 @@ public class MinimumWindowSubstring {
 	    }
 	    //two pointers
 	    int left = 0;
+		//effective number
 	    int count = 0;
 	    int minLen = S.length()+1;
 	    int minStart = 0;

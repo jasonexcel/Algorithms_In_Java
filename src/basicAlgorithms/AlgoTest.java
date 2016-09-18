@@ -36,6 +36,9 @@ public class AlgoTest {
 //        	System.out.print(elem + ", ");
 //        }
 
+		int test = (int) Math.floor(-7 / 4.);
+		System.out.println("-2.5=" + Math.floor(-2.5));
+		System.out.println("-7/4=" + test);
 		Suit s = null;
 		s = Suit.HEARTS;
 		switch (s) {

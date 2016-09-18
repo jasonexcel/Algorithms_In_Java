@@ -12,48 +12,76 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
-public class BSTIterator implements Iterator<Object>{
-	int curIndex;
-    List<TreeNode> list; //!!!
-    
-    public BSTIterator(TreeNode root) {
-        list = new ArrayList<TreeNode>();
-        dfs(root, list);
-        curIndex = 0; //!!!
-    }
-    
-    private void dfs(TreeNode root, List<TreeNode> res) {
-        if(root == null) {
-            return;
+public class BSTIterator{
+        private Stack<TreeNode> stack;
+
+        public BSTIterator(TreeNode root) {
+            stack = new Stack<>();
+            pushAll(root);
         }
-        dfs(root.left, res);
-        res.add(root);
-        dfs(root.right, res);
+
+        /** @return whether we have a next smallest number */
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+
+        /** @return the next smallest number */
+        public int next() {
+            TreeNode tmp = stack.pop();
+            pushAll(tmp.right);
+            return tmp.val;
+        }
+
+        private void pushAll(TreeNode root) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+        }
     }
 
-    /** @return whether we have a next smallest number */
-    public boolean hasNext() {
-        if(curIndex < list.size()){
-            return true;
-        }
-        return false;
-    }
+//
+//    int curIndex;
+//    List<TreeNode> list; //!!!
+//
+//    public BSTIterator(TreeNode root) {
+//        list = new ArrayList<TreeNode>();
+//        dfs(root, list);
+//        curIndex = 0; //!!!
+//    }
+//
+//    private void dfs(TreeNode root, List<TreeNode> res) {
+//        if(root == null) {
+//            return;
+//        }
+//        dfs(root.left, res);
+//        res.add(root);
+//        dfs(root.right, res);
+//    }
+//
+//    /** @return whether we have a next smallest number */
+//    public boolean hasNext() {
+//        if(curIndex < list.size()){
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    /** @return the next smallest number */
+//    public Object next() {
+//        if(curIndex < list.size()) {
+//        	// increment by one
+//            return list.get(curIndex++).val;
+//        }
+//        return Integer.MAX_VALUE;
+//    }
+//
+//	@Override
+//	public void remove() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
-    /** @return the next smallest number */
-    public Object next() {
-        if(curIndex < list.size()) {
-        	// increment by one
-            return list.get(curIndex++).val;
-        }
-        return Integer.MAX_VALUE;
-    }
-
-	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-		
-	}
-}
 
 //Iterative method
  class BSTIteratorII {

@@ -31,30 +31,49 @@ public class BinaryTreePreorderTraversal {
 		// TODO Auto-generated method stub
 
 	}
+	public List<Integer> preorderTraversalInterative(TreeNode root) {
+		List<Integer> list = new ArrayList<>();
+		if (root == null) {
+			return list;
+		}
+		Stack<TreeNode> stack = new Stack<>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			TreeNode tmp = stack.pop();
+			list.add(tmp.val);
+			if (tmp.right != null) {
+				stack.push(tmp.right);
+			}
+			if (tmp.left != null) {
+				stack.push(tmp.left);
+			}
+		}
+		return list;
+	}
 	// time complexity: o(n), space complexity: o(logn)
-	public List<Integer> preorderTraversalIterative(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        //must check root before add root into stack
-        if(root == null){
-        	return res;
-        }
-        Stack<TreeNode> s = new Stack<TreeNode>();
-        s.add(root);
-        while(!s.empty()){
-        	TreeNode cur = s.pop();
-        	//visit current node
-        	res.add(cur.val);
-        	//push right child into stack
-        	if(cur.right != null){
-        		s.push(cur.right);
-        	}
-        	//push left
-        	if(cur.left != null){
-        		s.push(cur.left); 
-        	}        	       
-        }
-        return res;
-    }
+//	public List<Integer> preorderTraversalIterative(TreeNode root) {
+//        List<Integer> res = new ArrayList<Integer>();
+//        //must check root before add root into stack
+//        if(root == null){
+//        	return res;
+//        }
+//        Stack<TreeNode> s = new Stack<TreeNode>();
+//        s.add(root);
+//        while(!s.empty()){
+//        	TreeNode cur = s.pop();
+//        	//visit current node
+//        	res.add(cur.val);
+//        	//push right child into stack
+//        	if(cur.right != null){
+//        		s.push(cur.right);
+//        	}
+//        	//push left
+//        	if(cur.left != null){
+//        		s.push(cur.left);
+//        	}
+//        }
+//        return res;
+//    }
 	public List<Integer> preorderTraversalIterativeGeneral(TreeNode root) {
 		List<Integer> res = new ArrayList<Integer>();
 		Stack<TreeNode> s = new Stack<TreeNode>();

@@ -9,7 +9,7 @@ The number of ways decoding "12" is 2.*/
 
 public class DecodeWays {
 	public static void main(String[] args) {
-		int res = new DecodeWays().numDecodings("101");
+		int res = new DecodeWays().numDecodings("150");
 		System.out.println(res);
 	}
 	//dp, o(n) time, o(1) space

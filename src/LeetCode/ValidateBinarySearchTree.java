@@ -107,14 +107,14 @@ public class ValidateBinarySearchTree {
 	    public boolean isValidBSTIII(TreeNode root) {
 	        return isValidBSTHelper(root, (long)Integer.MAX_VALUE+1, (long)Integer.MIN_VALUE-1);
 	    }
-	    private boolean isValidBSTHelper(TreeNode root, long leftMax, long rightMin) {
+	    private boolean isValidBSTHelper(TreeNode root, long upperRange, long lowerRange) {
 	        if(root == null) {
 	            return true;
 	        }
-	        if(root.val>=leftMax || root.val <= rightMin) {
+	        if(root.val>=upperRange || root.val <= lowerRange) {
 	            return false;
 	        }
-	        return isValidBSTHelper(root.left, root.val, rightMin) && isValidBSTHelper(root.right, leftMax, root.val);
+	        return isValidBSTHelper(root.left, root.val, lowerRange) && isValidBSTHelper(root.right, upperRange, root.val);
 	    }
 	    
 	    private boolean isValidBSTHelperII(TreeNode root, long leftMax, long rightMin) {
