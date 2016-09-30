@@ -3,11 +3,7 @@
  */
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Shaun
@@ -82,6 +78,31 @@ public class CloneGraph {
 		}
 		return map.get(node);		
 	}
+
+	//
+	public UndirectedGraphNode cloneGraphBest(UndirectedGraphNode node) {
+		//Map<Label, Node>
+		Map<Integer, UndirectedGraphNode> map = new HashMap<>();
+		return clone(node, map);
+	}
+
+	private UndirectedGraphNode clone(UndirectedGraphNode node, Map<Integer, UndirectedGraphNode> map) {
+		if (node == null) {
+			return null;
+		}
+
+		if (map.containsKey(node.label)) {
+			return map.get(node.label);
+		}
+
+		UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
+		map.put(clone.label, clone);
+		for (UndirectedGraphNode neighbor : node.neighbors) {
+			clone.neighbors.add(clone(neighbor, map));
+		}
+		return clone;
+	}
+
 	// recursive method
 	public UndirectedGraphNode cloneGraphRecursion(UndirectedGraphNode node) {
 	    if(node == null)

@@ -46,7 +46,7 @@ public class MergeKSortedLists {
     		return mergeTwoLists(listA, listB);
     	}
     	else{
-    		// return the only list
+    		// return the only w
     		return lists.get(0);
     	}
     }

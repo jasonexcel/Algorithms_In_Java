@@ -32,6 +32,8 @@ public class ReadNCharactersGivenRead4 {
         return i;
     }
 
+
+
     int read4(char[] buf){
         //fake return
         return 4;

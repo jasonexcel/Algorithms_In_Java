@@ -21,12 +21,13 @@ public class ReadNCharactersGivenRead4II {
      * @return    The number of characters read
      */
     char[] buf4 = new char[4];
-    int indexOfRead4 = 0;
-    int buf4Size = 0;
+    int indexOfRead4 = 0; // index to read from buf4
+    int buf4Size = 0; // current remaining number of characters in buf4
     public int read(char[] buf, int n) {
         boolean eof = false;
         int i = 0;
         while(i < n && !eof) {
+            // buf4Size not zero: some remaining characters from last read() call
             if(buf4Size == 0){
                 buf4Size = read4(buf4);
                 indexOfRead4 = 0;

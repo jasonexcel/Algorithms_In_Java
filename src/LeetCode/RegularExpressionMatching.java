@@ -66,7 +66,7 @@ public class RegularExpressionMatching {
 		return dp[s.length()][p.length()];
 	}
 
-	public boolean isMatch(String s, String p) {
+	private boolean isMatchII(String s, String p) {
 	    return helper(s,p,0,0);
 	}
 	private boolean helper(String s, String p, int i, int j)

@@ -43,7 +43,7 @@ public class PopulatingNextRightPointersinEachNodeII {
         connect(root.left);
     }
 	
-	// hard 
+	// hard iterative
 	//http://blog.csdn.net/linhuanmars/article/details/23510601
 	public void connectConstantSpace(TreeLinkNode root) {
 	    if(root == null)

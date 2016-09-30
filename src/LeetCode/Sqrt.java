@@ -14,27 +14,28 @@ public class Sqrt {
         // DO NOT write main() function
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(x<=0) return 0;
-        if(x == 1) return 1;
+        if(x <= 0){
+            return 0;
+        }
         int min = 1;
-        //weird, not good
-        int max = (int) (x>Math.sqrt(Integer.MAX_VALUE)? Math.sqrt(Integer.MAX_VALUE):x);
-        int mid;
-        while(min < max){
-            mid = (min + max)/2;
-            if(mid*mid>x){
-                max = mid;
+        int max = x/2+1;
+        while(min<=max){
+            int mid = (min+max)/2;
+            if(x/mid>mid){
+                min = mid + 1;
             }
-            else if (min * mid == x || (mid+1)*(mid+1) > x){
+            else if(x/mid<mid){
+                max = mid - 1;
+            }
+            else{
                 return mid;
             }
-            else {
-                min = mid+1;
-            }
-                
         }
-        return (min+max)/2;
-    }    
+        return max;
+    }
+
+
+
 	public static int sqrt2(int x){
 		if(x<=0) return 0;
         if(x == 1) return 1;

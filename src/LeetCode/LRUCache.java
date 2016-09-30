@@ -99,7 +99,7 @@ public class LRUCache {
 	
 class DoubleLinkedListNode {
 	public int val;
-	public int key;
+	public int key; // needed when removal from map
 	public DoubleLinkedListNode pre;
 	public DoubleLinkedListNode next;
 	
