@@ -3,6 +3,7 @@ package RandomPractice;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 /**
  * Created by Shaun on 8/14/2016.
@@ -21,11 +22,12 @@ public class LongestPalindromeSubstringTest {
         } catch(NullPointerException e) {
             System.out.println(e);
         }
-        assertEquals(ins.getLongestpalindromeInString(""), 0);
-        assertEquals(ins.getLongestpalindromeInString("1"), 1);
-        assertEquals(ins.getLongestpalindromeInString("aba"), 3);
-        assertEquals(ins.getLongestpalindromeInString("dabafg"), 3);
-        assertEquals(ins.getLongestpalindromeInString("aabbaddc"), 4);
+        assertThat(ins.getLongestpalindromeInString(""), is(0));
+        assertEquals(0, ins.getLongestpalindromeInString(""));
+        assertEquals(1, ins.getLongestpalindromeInString("1"));
+        assertEquals(3, ins.getLongestpalindromeInString("aba"));
+        assertEquals(3, ins.getLongestpalindromeInString("dabafg"));
+        assertEquals(4, ins.getLongestpalindromeInString("aabbaddc"));
     }
 
     @Test

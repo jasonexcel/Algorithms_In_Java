@@ -3,12 +3,24 @@
  */
 package LeetCode;
 
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 /**
  * @author sjia
  *
  */
 
 public class WildcardMatching {
+	@Test
+	public void testWildcardMatching() throws Exception {
+		WildcardMatching ins = new WildcardMatching();
+		String s = "";
+		String p = "*";
+		assertThat(ins.isMatch_2d_method(s, p), is(true));
+	}
     // preferred
 	public boolean isMatch_2d_method(String s, String p) {
 		int m=s.length(), n=p.length();
@@ -17,7 +29,7 @@ public class WildcardMatching {
 		for (int i=1; i<=m; i++) {
 			dp[i][0] = false;
 		}
-
+		// preprocess *
 		for(int j=1; j<=n; j++) {
 			if(p.charAt(j-1)=='*'){
 				dp[0][j] = true;
@@ -31,6 +43,8 @@ public class WildcardMatching {
 				if (p.charAt(j-1)!='*') {
 					dp[i][j] = dp[i-1][j-1] && (s.charAt(i-1)==p.charAt(j-1) || p.charAt(j-1)=='?');
 				} else {
+					//dp[i-1][j] - * matches s.charAt(i-1)
+					//dp[i][j-1] - * is "", s.charAt(i-1) to match p.charAt(j-2)
 					dp[i][j] = dp[i-1][j] || dp[i][j-1];
 				}
 			}

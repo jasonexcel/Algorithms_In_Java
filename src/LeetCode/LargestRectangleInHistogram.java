@@ -57,7 +57,15 @@ public class LargestRectangleInHistogram {
             while(!stack.isEmpty() && height[i]<=height[stack.peek()])
             {
                 int index = stack.pop();
-                int curArea = stack.isEmpty()?i*height[index]:(i-stack.peek()-1)*height[index];
+                int curHeight = height[index];
+                int curArea;
+                if(stack.isEmpty()) {
+                    //the range is from 0 to i - 1; [0, i)
+                    curArea = i * curHeight;
+                } else {
+                    // the range is from stack.peek()+1 to i - 1; (stack.peek, i)
+                    curArea = (i - stack.peek() - 1) * curHeight;
+                }
                 max = Math.max(max,curArea);
             }
             stack.push(i);
@@ -65,7 +73,8 @@ public class LargestRectangleInHistogram {
         while(!stack.isEmpty())
         {
             int index = stack.pop();
-            int curArea = stack.isEmpty()?height.length*height[index]:(height.length-stack.peek()-1)*height[index];
+            int curArea = stack.isEmpty() ? height.length*height[index]
+                    : (height.length-stack.peek()-1)*height[index];
             max = Math.max(max,curArea);            
         }
         return max;

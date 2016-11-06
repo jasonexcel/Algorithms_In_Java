@@ -18,7 +18,10 @@ public class AlgoTest {
 		// TODO Auto-generated method stub
 
 //
-
+		long a = (long) 255 <<24;
+		long b = 255 <<24 & 0xFF000000;
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
 
 
 //		Scanner sc = new Scanner(System.in);
@@ -64,6 +67,11 @@ public class AlgoTest {
 
 		System.out.println(ins.findTheDifference("aabc", "aabac"));
 		System.console();
+
+		ArrayDeque<Integer> stack = new ArrayDeque<>();
+		stack.push(3);
+		stack.peek();
+		stack.pop();
 
 
 	}
