@@ -40,8 +40,7 @@ public class MultiplyStrings {
         }
         StringBuilder sb = new StringBuilder();
         for(int index=len1+len2-1; index>=1; index--) {
-            char curChar = (char)(res[index]%10 + '0');
-            sb.append(curChar);
+			sb.append(res[index]%10);
             res[index-1] += res[index] / 10;
         }
         if(res[0] != 0) {

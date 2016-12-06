@@ -16,80 +16,29 @@ A solution set is:
 package LeetCode;
 
 import java.util.*;
-public class CombinationSum {	
-	
-  	public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
-		ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
-		if(candidates.length<1){
-		    return results;
-		}
-		ArrayList<Integer> result = new ArrayList<Integer>();
+public class CombinationSum {
+
+	public List<List<Integer>> combinationSum(int[] candidates, int target) {
 		Arrays.sort(candidates);
-		combinationSumHelp(candidates, target, 0, 0, result, results);
-		return results;
+		List<List<Integer>> res = new ArrayList<>();
+		List<Integer> group = new ArrayList<>();
+		dfs(candidates, target, 0, res, group);
+		return res;
 	}
-	
-	public void combinationSumHelp(int[] candidates, int target, int sum, int step, 
-			ArrayList<Integer> result, ArrayList<ArrayList<Integer>> results){
-		if(sum>target){
+
+	private void dfs(int[] can, int target, int cur, List<List<Integer>> res, List<Integer> group) {
+		if(target == 0) {
+			res.add(new ArrayList<Integer>(group));
 			return;
 		}
-		if(sum == target){
-			//!!!
-			ArrayList<Integer> temp = new ArrayList<Integer>(result);
-			if(!results.contains(temp)){
-				results.add(temp);
+
+		for(int i=cur; i<can.length; i++) {
+			if(can[i] > target) {
+				break;
 			}
-			return;
+			group.add(can[i]);
+			dfs(can, target-can[i], i, res, group);
+			group.remove(group.size()-1);
 		}
-		for(int i=step; i<candidates.length; i++){
-			result.add(candidates[i]);
-			combinationSumHelp(candidates, target, sum+candidates[i], i, result, results);
-			//no need to modify the sum here, since sum isn't changes, and we pass sum_candidates[i] into the method
-			result.remove(result.size() - 1);
-		}
-		return; // not needed
-	}
-	
-	// use hashset to remove duplicates
-	// break earlier
-  	public ArrayList<ArrayList<Integer>> combinationSumII(int[] candidates, int target) {
-		ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
-		if(candidates.length<1){
-		    return results;
-		}
-		Set<ArrayList<Integer>> set = new HashSet<ArrayList<Integer>>();
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		Arrays.sort(candidates);
-		combinationSumHelpII(candidates, target, 0, 0, result, set);
-		for(ArrayList<Integer> elem : set) {
-			results.add(elem);
-		}
-		return results;
-	}
-	
-	public void combinationSumHelpII(int[] candidates, int target, int sum, int step, 
-			ArrayList<Integer> result, Set<ArrayList<Integer>> results){
-//		if(sum>target){
-//			return;
-//		}
-		if(sum == target){
-			//!!!
-			ArrayList<Integer> temp = new ArrayList<Integer>(result);
-			if(!results.contains(temp)){
-				results.add(temp);
-			}
-			return;
-		}
-		for(int i=step; i<candidates.length; i++){
-			if(sum+candidates[i] > target) {
-			    break;
-			}
-			result.add(candidates[i]);			
-			combinationSumHelpII(candidates, target, sum+candidates[i], i, result, results);
-			//no need to modify the sum here, since sum isn't changes, and we pass sum_candidates[i] into the method
-			result.remove(result.size() - 1);
-		}
-		return; // not needed
 	}
 }

@@ -17,7 +17,32 @@ public class SubsetsII {
 		int[] num = {1};
 		ins.subsetsWithDup(num);
 	}
-	
+
+    //templates
+    public List<List<Integer>> subsetsWithDupTemplates(int[] nums) {
+        List<List<Integer>> results = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0) {
+            return results;
+        }
+        Arrays.sort(nums);
+        List<Integer> res = new ArrayList<Integer>();
+        helper(results, res, nums, 0);
+
+        return results;
+    }
+    private void helper(List<List<Integer>> results, List<Integer> res, int[] nums, int pos) {
+        results.add(new ArrayList<Integer>(res));
+
+        for(int i = pos; i < nums.length; i++) {
+            if(i != pos && nums[i] == nums[i-1]) {
+                continue;
+            }
+            res.add(nums[i]);
+            helper(results, res, nums, i + 1);
+            res.remove(res.size() - 1);
+        }
+    }
+
     // preferred
     public List<ArrayList<Integer>> subsetsWithDup(int[] nums) {
         List<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();

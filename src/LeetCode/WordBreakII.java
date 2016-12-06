@@ -8,31 +8,46 @@ import java.util.*;
 public class WordBreakII {
 
     public class Solution {
-        HashMap<String,List<String>> map = new HashMap<String,List<String>>();
+        // DFS + cache
+        // Preferred
         public List<String> wordBreak(String s, Set<String> wordDict) {
-            List<String> res = new ArrayList<String>();
-            if(s == null || s.length() == 0) {
-                return res;
+            // HashMap to store all the solutions in the DFS
+            Map<String, List<String>> map = new HashMap<>();
+            return dfs(s, wordDict, 0, map);
+        }
+
+        private List<String> dfs(String s, Set<String> dict, int start, Map<String, List<String>> map) {
+            List<String> cur = new ArrayList<>();
+            if(start == s.length()) {
+                cur.add("");
             }
-            if(map.containsKey(s)) {
-                return map.get(s);
-            }
-            if(wordDict.contains(s)) {
-                res.add(s);
-            }
-            for(int i = 1 ; i < s.length() ; i++) {
-                String t = s.substring(i);
-                if(wordDict.contains(t)) {
-                    List<String> temp = wordBreak(s.substring(0 , i) , wordDict);
-                    if(temp.size() != 0) {
-                        for(int j = 0 ; j < temp.size() ; j++) {
-                            res.add(temp.get(j) + " " + t);
+
+            for(int i=start; i<s.length(); i++) {
+                String sub = s.substring(start, i+1);
+                if(dict.contains(sub)) {
+                    List<String> temp;
+                    //try to use the cache value first
+                    if(map.containsKey(s.substring(i+1))) {
+                        temp = map.get(s.substring(i+1));
+                    } else {
+                        temp = dfs(s, dict, i+1, map);
+                    }
+                    if(temp.size() == 1 && temp.get(0) == "") {
+                        //sub is the last word, no space behind
+                        cur.add(sub);
+                    } else {
+                        // add all word breaks after we select current sub
+                        for(String str : temp) {
+                            cur.add(sub + ' ' + str);
                         }
                     }
+
+
                 }
             }
-            map.put(s , res);
-            return res;
+            //current word breaks are all found, put them into map
+            map.put(s.substring(start), cur);
+            return cur;
         }
     }
 

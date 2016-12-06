@@ -5,7 +5,7 @@ import java.util.*;
 public class AlgoTest {
 
 	/**
-	 * @param args
+	 * @param
 	 */
 
 	public enum Suit {
@@ -17,11 +17,31 @@ public class AlgoTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-//
-		long a = (long) 255 <<24;
-		long b = 255 <<24 & 0xFF000000;
-		System.out.println("a = " + a);
-		System.out.println("b = " + b);
+		Comparator<TreeNode> comp = new Comparator<TreeNode>() {
+			@Override
+			public int compare(TreeNode a, TreeNode b) {
+				return a.val - b.val;
+			}
+		};
+		int a = 5;
+		float c = 5.0f;
+		double b = 5.0;
+		if(a == b) {
+			System.out.println("int = double");
+		}
+		if(a == c) {
+			System.out.println("int == float");
+		}
+		if(b == c) {
+			System.out.println("float = double");
+		}
+//        int ab = (int)(-2.5);
+//		//floor(-2.5)=-3
+//		System.out.println("floor(-2.5)=" + ab);
+//		long a = (long) 255 <<24;
+//		long b = 255 <<24 & 0xFF000000;
+//		System.out.println("a = " + a);
+//		System.out.println("b = " + b);
 
 
 //		Scanner sc = new Scanner(System.in);
@@ -73,9 +93,45 @@ public class AlgoTest {
 		stack.peek();
 		stack.pop();
 
-
+		ins.canCross(new int[]{0, 1,3});
 	}
+	public boolean canCross(int[] stones) {
+		int len = stones.length;
+		if(len == 1) {
+			return stones[0] == 0;
+		}
+		if(stones[1] != 1) {
+			return false;
+		}
 
+		Map<Integer, Integer> map = new HashMap<>();
+
+		for(int i=0; i<len; i++) {
+			map.put(stones[i], i);
+		}
+
+		boolean[][] canJump = new boolean[len+1][len];
+		canJump[1][0] = true;
+		canJump[2][1] = true;
+
+		for(int i=2; i<=len; i++) {
+			for(int j=i-1; j>=1; j--) {
+				int minPrevGap = Math.max(1, stones[i]-stones[j]-1);
+				int maxPrevGap = stones[i]-stones[j]+1;
+				for(long prev=minPrevGap; prev<=maxPrevGap; prev++) {
+					if(map.containsKey((int)(stones[j]-prev))&&canJump[j+1][map.get((int)(stones[j]-prev))+1]) {
+						canJump[i+1][j+1] = true;
+					}
+				}
+			}
+		}
+		for(boolean val : canJump[len]) {
+			if (val) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// the quick brown fox jumps over the lazy dog
 	// quick: 1, brown: 1, the: 2

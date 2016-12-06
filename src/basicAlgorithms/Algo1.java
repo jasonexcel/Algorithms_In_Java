@@ -1,13 +1,9 @@
 package basicAlgorithms;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
- enum Suit {
+enum Suit {
 	CLUBS, HEARTS, SPADES, DIAMONDS
 }; 
  
@@ -29,19 +25,12 @@ public class Algo1 implements Inter {
 		// without reflection
 		Algo1 foo = new Algo1();
 		foo.lengthOfLastWord("foo");
-		 
-		// with reflection
-		Object foo2;
-		try {
-			foo2 = Class.forName("complete.classpath.and.Foo").newInstance();
-			Method m;
-			m = foo2.getClass().getDeclaredMethod("hello", new Class<?>[0]);
-			m.invoke(foo2);
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Arrays.toString(args);
+		Stack<List<Integer>> s = new Stack<>();
+		Queue<Integer> q = new LinkedList<>();
+		q.isEmpty(); s.isEmpty();
+		List<List<Integer>> results = new ArrayList<>();
+		List<Character>[] adjList = new ArrayList[26];
 	
 
 	

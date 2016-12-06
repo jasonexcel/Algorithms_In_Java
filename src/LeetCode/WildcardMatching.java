@@ -17,10 +17,41 @@ public class WildcardMatching {
 	@Test
 	public void testWildcardMatching() throws Exception {
 		WildcardMatching ins = new WildcardMatching();
-		String s = "";
+		String s = "aa";
 		String p = "*";
-		assertThat(ins.isMatch_2d_method(s, p), is(true));
+		assertThat(ins.isMatch(s, p), is(true));
 	}
+	// TLE
+	public boolean isMatch(String s, String p) {
+
+		int lenS = s.length();
+		int lenP = p.length();
+		if(lenS == 0 && lenP == 0) {
+			return true;
+		} else if(lenS == 0) {
+			return containsOnlyStar(p);
+		} else if(lenP == 0) {
+			return false;
+		}
+
+		if(s.charAt(lenS-1) == p.charAt(lenP-1) || p.charAt(lenP-1) == '?') {
+			return isMatch(s.substring(0, lenS-1), p.substring(0, lenP-1));
+		}
+		if(p.charAt(lenP-1) == '*') {
+			return isMatch(s.substring(0, lenS-1), p.substring(0, lenP)) || isMatch(s.substring(0, lenS), p.substring(0, lenP-1));
+		}
+		return false;
+	}
+
+	private boolean containsOnlyStar(String str) {
+		for(char c : str.toCharArray()) {
+			if(c!= '*') {
+				return false;
+			}
+		}
+		return true;
+	}
+
     // preferred
 	public boolean isMatch_2d_method(String s, String p) {
 		int m=s.length(), n=p.length();
@@ -54,7 +85,7 @@ public class WildcardMatching {
 
 	// TBK
 	// stardard 2-D DP 
-	public boolean isMatch(String s, String p) {
+	public boolean isMatch2D(String s, String p) {
 	    if(p.length()==0){
 	    	return s.length()==0;
 	    }
